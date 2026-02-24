@@ -24,6 +24,21 @@
           l.pathname.slice(0, -1) + decoded + l.hash
         );
       }
+      // Fix absolute asset paths for sub-path deployments (GitHub Pages)
+      var base = document.querySelector('base') ? document.querySelector('base').getAttribute('href') : '/';
+      var style = document.createElement('style');
+      style.textContent = [
+        '@font-face {',
+        '  font-family: "DynaPuff";',
+        '  src: url("' + base + 'assets/fonts/DynaPuff-VariableFont_wdth,wght.ttf") format("truetype");',
+        '  font-weight: 100 900;',
+        '  font-stretch: 75% 100%;',
+        '  font-style: normal;',
+        '}',
+        'html, body { cursor: url("' + base + 'assets/cursors/cursor_blue.png"), auto; }',
+        'html:active, body:active { cursor: url("' + base + 'assets/cursors/cursor_red.png"), auto; }'
+      ].join('');
+      document.head.appendChild(style);
     }(window.location))
   </script>
 </head>

@@ -1,11 +1,3 @@
-@font-face {
-  font-family: 'DynaPuff';
-  src: url('assets/fonts/DynaPuff-VariableFont_wdth,wght.ttf') format('truetype');
-  font-weight: 100 900;
-  font-stretch: 75% 100%;
-  font-style: normal;
-}
-
 *, *::before, *::after {
   box-sizing: border-box;
 }
@@ -16,7 +8,6 @@ html, body {
   min-height: 100%;
   display: flex;
   flex-direction: column;
-  cursor: url('assets/cursors/cursor_blue.png'), auto;
   font-family: 'DynaPuff', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   font-weight: 400;
   font-stretch: 80%;
@@ -32,9 +23,6 @@ html, body {
   overflow-y: auto;
 }
 
-html:active, body:active {
-  cursor: url('assets/cursors/cursor_red.png'), auto;
-}
 
 a {
   color: #ffd85c;
