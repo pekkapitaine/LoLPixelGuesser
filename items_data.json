@@ -1,0 +1,1329 @@
+{
+  "images": [
+    {
+      "file": "Masque_abyssal.png",
+      "name": "Masque abyssal",
+      "category": "classique"
+    },
+    {
+      "file": "Égide_de_la_Légion.png",
+      "name": "Égide de la Légion",
+      "category": "classique"
+    },
+    {
+      "file": "Feu_follet_éthéré.png",
+      "name": "Feu follet éthéré",
+      "category": "classique"
+    },
+    {
+      "file": "Tome_damplification.png",
+      "name": "Tome d’amplification",
+      "category": "classique"
+    },
+    {
+      "file": "Cha_nes_de_lanathème.png",
+      "name": "Chaînes de l'anathème",
+      "category": "arena"
+    },
+    {
+      "file": "B_ton_de_larchange.png",
+      "name": "Bâton de l’archange",
+      "category": "classique"
+    },
+    {
+      "file": "Encensoir_ardent.png",
+      "name": "Encensoir ardent",
+      "category": "classique"
+    },
+    {
+      "file": "Avancée_blindée.png",
+      "name": "Avancée blindée",
+      "category": "classique"
+    },
+    {
+      "file": "Arc_axiomatique.png",
+      "name": "Arc axiomatique",
+      "category": "classique"
+    },
+    {
+      "file": "BF_Glaive.png",
+      "name": "BF Glaive",
+      "category": "classique"
+    },
+    {
+      "file": "Cendres_de_Bami.png",
+      "name": "Cendres de Bami",
+      "category": "classique"
+    },
+    {
+      "file": "Miroir_en_verre_de_Bandle.png",
+      "name": "Miroir en verre de Bandle",
+      "category": "classique"
+    },
+    {
+      "file": "Voile_de_la_banshee.png",
+      "name": "Voile de la banshee",
+      "category": "classique"
+    },
+    {
+      "file": "Jambières_du_berzerker.png",
+      "name": "Jambières du berzerker",
+      "category": "classique"
+    },
+    {
+      "file": "Torche_noire.png",
+      "name": "Torche noire",
+      "category": "classique"
+    },
+    {
+      "file": "Couperet_noir.png",
+      "name": "Couperet noir",
+      "category": "classique"
+    },
+    {
+      "file": "Créateur_de_trous_noirs.png",
+      "name": "Créateur de trous noirs",
+      "category": "arena"
+    },
+    {
+      "file": "Lame_du_roi_déchu.png",
+      "name": "Lame du roi déchu",
+      "category": "classique"
+    },
+    {
+      "file": "Baguette_explosive.png",
+      "name": "Baguette explosive",
+      "category": "classique"
+    },
+    {
+      "file": "Joyau_putréfiant.png",
+      "name": "Joyau putréfiant",
+      "category": "classique"
+    },
+    {
+      "file": "Malédiction_du_sanguinaire.png",
+      "name": "Malédiction du sanguinaire",
+      "category": "classique"
+    },
+    {
+      "file": "Mélodie_du_sang.png",
+      "name": "Mélodie du sang",
+      "category": "classique"
+    },
+    {
+      "file": "Soif_de_sang.png",
+      "name": "Soif-de-sang",
+      "category": "classique"
+    },
+    {
+      "file": "Bottes_de_célérité.png",
+      "name": "Bottes de célérité",
+      "category": "classique"
+    },
+    {
+      "file": "Armure_roncière.png",
+      "name": "Armure roncière",
+      "category": "classique"
+    },
+    {
+      "file": "Jus_chapeau.png",
+      "name": "Jus chapeau",
+      "category": "arena"
+    },
+    {
+      "file": "Catalyseur_de_léternité.png",
+      "name": "Catalyseur de l'éternité",
+      "category": "classique"
+    },
+    {
+      "file": "Marteau_de_Caulfield.png",
+      "name": "Marteau de Caulfield",
+      "category": "classique"
+    },
+    {
+      "file": "Opposition_céleste.png",
+      "name": "Opposition céleste",
+      "category": "classique"
+    },
+    {
+      "file": "Broyeuses_à_cha_nes.png",
+      "name": "Broyeuses à chaînes",
+      "category": "classique"
+    },
+    {
+      "file": "Épée_dentelée_chimico_punk.png",
+      "name": "Épée dentelée chimico-punk",
+      "category": "classique"
+    },
+    {
+      "file": "Cape_dagilité.png",
+      "name": "Cape d’agilité",
+      "category": "classique"
+    },
+    {
+      "file": "Cotte_de_mailles.png",
+      "name": "Cotte de mailles",
+      "category": "classique"
+    },
+    {
+      "file": "Manteau_de_la_nuit_étoilée.png",
+      "name": "Manteau de la nuit étoilée",
+      "category": "arena"
+    },
+    {
+      "file": "Armure_détoffe.png",
+      "name": "Armure d'étoffe",
+      "category": "classique"
+    },
+    {
+      "file": "Balise_de_contr_le.png",
+      "name": "Balise de contrôle",
+      "category": "classique"
+    },
+    {
+      "file": "Volonté_cosmique.png",
+      "name": "Volonté cosmique",
+      "category": "classique"
+    },
+    {
+      "file": "Lucidité_pourpre.png",
+      "name": "Lucidité pourpre",
+      "category": "classique"
+    },
+    {
+      "file": "Couronne_de_la_reine_brisée.png",
+      "name": "Couronne de la reine brisée",
+      "category": "arena"
+    },
+    {
+      "file": "Fleur_de_crypte.png",
+      "name": "Fleur de crypte",
+      "category": "classique"
+    },
+    {
+      "file": "Bracelet_cristallin.png",
+      "name": "Bracelet cristallin",
+      "category": "classique"
+    },
+    {
+      "file": "Abatteur.png",
+      "name": "Abatteur",
+      "category": "classique"
+    },
+    {
+      "file": "Dague.png",
+      "name": "Dague",
+      "category": "classique"
+    },
+    {
+      "file": "Serres_de_sombracier.png",
+      "name": "Serres de sombracier",
+      "category": "arena"
+    },
+    {
+      "file": "Sceau_noir.png",
+      "name": "Sceau noir",
+      "category": "classique"
+    },
+    {
+      "file": "C_ur_de_laube.png",
+      "name": "Cœur de l’aube",
+      "category": "classique"
+    },
+    {
+      "file": "Plaque_du_mort.png",
+      "name": "Plaque du mort",
+      "category": "classique"
+    },
+    {
+      "file": "Danse_de_la_mort.png",
+      "name": "Danse de la mort",
+      "category": "classique"
+    },
+    {
+      "file": "Guillotine.png",
+      "name": "Guillotine",
+      "category": "arena"
+    },
+    {
+      "file": "Étreinte_du_séraphin.png",
+      "name": "Étreinte du séraphin",
+      "category": "arena"
+    },
+    {
+      "file": "Couronne_du_roi_démon.png",
+      "name": "Couronne du roi démon",
+      "category": "arena"
+    },
+    {
+      "file": "Bombe_de_cristal.png",
+      "name": "Bombe de cristal",
+      "category": "arena"
+    },
+    {
+      "file": "Lance_de_diamant.png",
+      "name": "Lance de diamant",
+      "category": "arena"
+    },
+    {
+      "file": "Pourfendeur_divin.png",
+      "name": "Pourfendeur divin",
+      "category": "arena"
+    },
+    {
+      "file": "Lame_de_Doran.png",
+      "name": "Lame de Doran",
+      "category": "classique"
+    },
+    {
+      "file": "Anneau_de_Doran.png",
+      "name": "Anneau de Doran",
+      "category": "classique"
+    },
+    {
+      "file": "Bouclier_de_Doran.png",
+      "name": "Bouclier de Doran",
+      "category": "classique"
+    },
+    {
+      "file": "C_ur_de_dragon.png",
+      "name": "Cœur de dragon",
+      "category": "arena"
+    },
+    {
+      "file": "Lame_vespérale_de_Draktharr.png",
+      "name": "Lame vespérale de Draktharr",
+      "category": "arena"
+    },
+    {
+      "file": "Échos_dHelia.png",
+      "name": "Échos d'Helia",
+      "category": "classique"
+    },
+    {
+      "file": "Éclipse.png",
+      "name": "Éclipse",
+      "category": "classique"
+    },
+    {
+      "file": "Manteau_de_la_nuit.png",
+      "name": "Manteau de la nuit",
+      "category": "classique"
+    },
+    {
+      "file": "Miracle_dEleisa.png",
+      "name": "Miracle d’Eleisa",
+      "category": "arena"
+    },
+    {
+      "file": "Élixir_davarice.png",
+      "name": "Élixir d’avarice",
+      "category": "classique"
+    },
+    {
+      "file": "Élixir_de_force.png",
+      "name": "Élixir de force",
+      "category": "classique"
+    },
+    {
+      "file": "Élixir_de_fer.png",
+      "name": "Élixir de fer",
+      "category": "classique"
+    },
+    {
+      "file": "Élixir_de_sorcellerie.png",
+      "name": "Élixir de sorcellerie",
+      "category": "classique"
+    },
+    {
+      "file": "Élixir_de_rage.png",
+      "name": "Élixir de rage",
+      "category": "classique"
+    },
+    {
+      "file": "Promesse_empyréenne.png",
+      "name": "Promesse empyréenne",
+      "category": "arena"
+    },
+    {
+      "file": "Faux_spectrale.png",
+      "name": "Faux spectrale",
+      "category": "classique"
+    },
+    {
+      "file": "Gel_éternel.png",
+      "name": "Gel éternel",
+      "category": "arena"
+    },
+    {
+      "file": "Marque_du_bourreau.png",
+      "name": "Marque du bourreau",
+      "category": "classique"
+    },
+    {
+      "file": "Hexplaque_expérimentale.png",
+      "name": "Hexplaque expérimentale",
+      "category": "classique"
+    },
+    {
+      "file": "_il_du_cyclone.png",
+      "name": "Œil du cyclone",
+      "category": "classique"
+    },
+    {
+      "file": "Charme_féérique.png",
+      "name": "Charme féérique",
+      "category": "classique"
+    },
+    {
+      "file": "Altération_divinatoire.png",
+      "name": "Altération divinatoire",
+      "category": "classique"
+    },
+    {
+      "file": "Cendres_fatidiques.png",
+      "name": "Cendres fatidiques",
+      "category": "classique"
+    },
+    {
+      "file": "Codex_méphitique.png",
+      "name": "Codex méphitique",
+      "category": "classique"
+    },
+    {
+      "file": "Fimbulvetr.png",
+      "name": "Fimbulvetr",
+      "category": "classique"
+    },
+    {
+      "file": "Mangeur_de_chair.png",
+      "name": "Mangeur de chair",
+      "category": "arena"
+    },
+    {
+      "file": "Idole_interdite.png",
+      "name": "Idole interdite",
+      "category": "classique"
+    },
+    {
+      "file": "Force_de_lentropie.png",
+      "name": "Force de l’entropie",
+      "category": "arena"
+    },
+    {
+      "file": "Force_de_la_nature.png",
+      "name": "Force de la nature",
+      "category": "classique"
+    },
+    {
+      "file": "Semelles_militaires.png",
+      "name": "Semelles militaires",
+      "category": "classique"
+    },
+    {
+      "file": "C_ur_gelé.png",
+      "name": "Cœur gelé",
+      "category": "classique"
+    },
+    {
+      "file": "Fulmination.png",
+      "name": "Fulmination",
+      "category": "arena"
+    },
+    {
+      "file": "Force_du_vent.png",
+      "name": "Force du vent",
+      "category": "arena"
+    },
+    {
+      "file": "Lame_du_parieur.png",
+      "name": "Lame du parieur",
+      "category": "arena"
+    },
+    {
+      "file": "Lithoplastron_de_gargouille.png",
+      "name": "Lithoplastron de gargouille",
+      "category": "arena"
+    },
+    {
+      "file": "Ceinture_du_géant.png",
+      "name": "Ceinture du géant",
+      "category": "classique"
+    },
+    {
+      "file": "Bouclier_glacial.png",
+      "name": "Bouclier glacial",
+      "category": "classique"
+    },
+    {
+      "file": "Poussière_luisante.png",
+      "name": "Poussière luisante",
+      "category": "classique"
+    },
+    {
+      "file": "Éviscérateur.png",
+      "name": "Éviscérateur",
+      "category": "arena"
+    },
+    {
+      "file": "Amulette_du_gardien.png",
+      "name": "Amulette du gardien",
+      "category": "arena"
+    },
+    {
+      "file": "Lame_du_gardien.png",
+      "name": "Lame du gardien",
+      "category": "arena"
+    },
+    {
+      "file": "Marteau_du_gardien.png",
+      "name": "Marteau du gardien",
+      "category": "arena"
+    },
+    {
+      "file": "Corne_du_gardien.png",
+      "name": "Corne du gardien",
+      "category": "arena"
+    },
+    {
+      "file": "Orbe_du_gardien.png",
+      "name": "Orbe du gardien",
+      "category": "arena"
+    },
+    {
+      "file": "Ange_gardien.png",
+      "name": "Ange gardien",
+      "category": "classique"
+    },
+    {
+      "file": "Lame_enragée_de_Guinsoo.png",
+      "name": "Lame enragée de Guinsoo",
+      "category": "classique"
+    },
+    {
+      "file": "Jambières_de_métal.png",
+      "name": "Jambières de métal",
+      "category": "classique"
+    },
+    {
+      "file": "Bébé_Saute_nuages.png",
+      "name": "Bébé Saute-nuages",
+      "category": "classique"
+    },
+    {
+      "file": "Coupe_jarrets.png",
+      "name": "Coupe-jarrets",
+      "category": "arena"
+    },
+    {
+      "file": "Déguisement_hanté.png",
+      "name": "Déguisement hanté",
+      "category": "classique"
+    },
+    {
+      "file": "Potion_de_soin.png",
+      "name": "Potion de soin",
+      "category": "classique"
+    },
+    {
+      "file": "Hache_d_trinsèque.png",
+      "name": "Hache d’Âtrinsèque",
+      "category": "classique"
+    },
+    {
+      "file": "C_uracier.png",
+      "name": "Cœuracier",
+      "category": "classique"
+    },
+    {
+      "file": "Hache_infernale.png",
+      "name": "Hache infernale",
+      "category": "arena"
+    },
+    {
+      "file": "Casque_dhémomancien.png",
+      "name": "Casque d’hémomancien",
+      "category": "arena"
+    },
+    {
+      "file": "Compagnon_Hexclair.png",
+      "name": "Compagnon Hexclair",
+      "category": "arena"
+    },
+    {
+      "file": "Hexterminateur.png",
+      "name": "Hexterminateur",
+      "category": "classique"
+    },
+    {
+      "file": "Alternateur_Hextech.png",
+      "name": "Alternateur Hextech",
+      "category": "classique"
+    },
+    {
+      "file": "Lame_canon_Hextech.png",
+      "name": "Lame-canon Hextech",
+      "category": "arena"
+    },
+    {
+      "file": "Ceinture_roquette_Hextech.png",
+      "name": "Ceinture-roquette Hextech",
+      "category": "classique"
+    },
+    {
+      "file": "Rayonnement_du_vide.png",
+      "name": "Rayonnement du vide",
+      "category": "classique"
+    },
+    {
+      "file": "Concentration_lointaine.png",
+      "name": "Concentration lointaine",
+      "category": "classique"
+    },
+    {
+      "file": "Orgueil.png",
+      "name": "Orgueil",
+      "category": "classique"
+    },
+    {
+      "file": "Brise_coques.png",
+      "name": "Brise-coques",
+      "category": "classique"
+    },
+    {
+      "file": "Gantelet_givrant.png",
+      "name": "Gantelet givrant",
+      "category": "classique"
+    },
+    {
+      "file": "Arc_bouclier_immortel.png",
+      "name": "Arc-bouclier immortel",
+      "category": "classique"
+    },
+    {
+      "file": "Mandat_impérial.png",
+      "name": "Mandat impérial",
+      "category": "classique"
+    },
+    {
+      "file": "Lame_dinfini.png",
+      "name": "Lame d’infini",
+      "category": "classique"
+    },
+    {
+      "file": "Bottes_de_lucidité.png",
+      "name": "Bottes de lucidité",
+      "category": "classique"
+    },
+    {
+      "file": "JakSho_le_Protéiforme.png",
+      "name": "Jak'Sho, le Protéiforme",
+      "category": "classique"
+    },
+    {
+      "file": "Jus_de_célérité.png",
+      "name": "Jus de célérité",
+      "category": "arena"
+    },
+    {
+      "file": "Jus_de_puissance.png",
+      "name": "Jus de puissance",
+      "category": "arena"
+    },
+    {
+      "file": "Jus_de_vitalité.png",
+      "name": "Jus de vitalité",
+      "category": "arena"
+    },
+    {
+      "file": "Rookern_kaénique.png",
+      "name": "Rookern kaénique",
+      "category": "classique"
+    },
+    {
+      "file": "Gemme_exaltante.png",
+      "name": "Gemme exaltante",
+      "category": "classique"
+    },
+    {
+      "file": "Jitte_de_Kinkou.png",
+      "name": "Jitte de Kinkou",
+      "category": "arena"
+    },
+    {
+      "file": "V_u_du_chevalier.png",
+      "name": "Vœu du chevalier",
+      "category": "classique"
+    },
+    {
+      "file": "Tueur_de_krakens.png",
+      "name": "Tueur de krakens",
+      "category": "classique"
+    },
+    {
+      "file": "Dernier_souffle.png",
+      "name": "Dernier souffle",
+      "category": "classique"
+    },
+    {
+      "file": "Tourment_de_Liandry.png",
+      "name": "Tourment de Liandry",
+      "category": "classique"
+    },
+    {
+      "file": "Fléau_de_liche.png",
+      "name": "Fléau de liche",
+      "category": "classique"
+    },
+    {
+      "file": "Paratonnerre.png",
+      "name": "Paratonnerre",
+      "category": "arena"
+    },
+    {
+      "file": "Médaillon_de_lIron_Solari.png",
+      "name": "Médaillon de l'Iron Solari",
+      "category": "classique"
+    },
+    {
+      "file": "Épée_longue.png",
+      "name": "Épée longue",
+      "category": "classique"
+    },
+    {
+      "file": "Salutations_de_Dominik.png",
+      "name": "Salutations de Dominik",
+      "category": "classique"
+    },
+    {
+      "file": "Chapitre_perdu.png",
+      "name": "Chapitre perdu",
+      "category": "classique"
+    },
+    {
+      "file": "Compagnon_de_Luden.png",
+      "name": "Compagnon de Luden",
+      "category": "classique"
+    },
+    {
+      "file": "Malfaisance.png",
+      "name": "Malfaisance",
+      "category": "classique"
+    },
+    {
+      "file": "Manamune.png",
+      "name": "Manamune",
+      "category": "classique"
+    },
+    {
+      "file": "Gueule_de_Malmortius.png",
+      "name": "Gueule de Malmortius",
+      "category": "classique"
+    },
+    {
+      "file": "Voleur_d_mes_de_Mejai.png",
+      "name": "Voleur d’âmes de Mejai",
+      "category": "classique"
+    },
+    {
+      "file": "Cimeterre_mercuriel.png",
+      "name": "Cimeterre mercuriel",
+      "category": "classique"
+    },
+    {
+      "file": "Sandales_de_Mercure.png",
+      "name": "Sandales de Mercure",
+      "category": "classique"
+    },
+    {
+      "file": "Bénédiction_de_Mikael.png",
+      "name": "Bénédiction de Mikael",
+      "category": "classique"
+    },
+    {
+      "file": "Lame_mirage.png",
+      "name": "Lame mirage",
+      "category": "arena"
+    },
+    {
+      "file": "Régénérateur_de_pierre_de_lune.png",
+      "name": "Régénérateur de pierre de lune",
+      "category": "classique"
+    },
+    {
+      "file": "Morellonomicon.png",
+      "name": "Morellonomicon",
+      "category": "classique"
+    },
+    {
+      "file": "Rappel_mortel.png",
+      "name": "Rappel mortel",
+      "category": "classique"
+    },
+    {
+      "file": "Bébé_Ixamandre.png",
+      "name": "Bébé Ixamandre",
+      "category": "classique"
+    },
+    {
+      "file": "Muramana.png",
+      "name": "Muramana",
+      "category": "classique"
+    },
+    {
+      "file": "Dent_de_Nashor.png",
+      "name": "Dent de Nashor",
+      "category": "classique"
+    },
+    {
+      "file": "Tremblelame_navori.png",
+      "name": "Tremblelame navori",
+      "category": "classique"
+    },
+    {
+      "file": "Baguette_trop_grosse.png",
+      "name": "Baguette trop grosse",
+      "category": "classique"
+    },
+    {
+      "file": "Manteau_de_Négatron.png",
+      "name": "Manteau de Négatron",
+      "category": "classique"
+    },
+    {
+      "file": "Moissonneur_nocturne.png",
+      "name": "Moissonneur nocturne",
+      "category": "arena"
+    },
+    {
+      "file": "Carquois_zénithien.png",
+      "name": "Carquois zénithien",
+      "category": "classique"
+    },
+    {
+      "file": "Cape_de_néant.png",
+      "name": "Cape de néant",
+      "category": "classique"
+    },
+    {
+      "file": "Orbe_de_loubli.png",
+      "name": "Orbe de l’oubli",
+      "category": "classique"
+    },
+    {
+      "file": "Opportunité.png",
+      "name": "Opportunité",
+      "category": "classique"
+    },
+    {
+      "file": "Brouilleur_oraculaire.png",
+      "name": "Brouilleur oraculaire",
+      "category": "classique"
+    },
+    {
+      "file": "Armure_sanguine.png",
+      "name": "Armure sanguine",
+      "category": "classique"
+    },
+    {
+      "file": "Phage.png",
+      "name": "Phage",
+      "category": "classique"
+    },
+    {
+      "file": "Danseur_fant_me.png",
+      "name": "Danseur fantôme",
+      "category": "classique"
+    },
+    {
+      "file": "Pioche.png",
+      "name": "Pioche",
+      "category": "classique"
+    },
+    {
+      "file": "Coques_en_acier.png",
+      "name": "Coques en acier",
+      "category": "classique"
+    },
+    {
+      "file": "Biscuit_de_longévité.png",
+      "name": "Biscuit de longévité",
+      "category": "classique"
+    },
+    {
+      "file": "Hydre_profane.png",
+      "name": "Hydre profane",
+      "category": "classique"
+    },
+    {
+      "file": "Griffe_du_r_deur.png",
+      "name": "Griffe du rôdeur",
+      "category": "arena"
+    },
+    {
+      "file": "Marionnettiste.png",
+      "name": "Marionnettiste",
+      "category": "arena"
+    },
+    {
+      "file": "Cape_du_pyromancien.png",
+      "name": "Cape du pyromancien",
+      "category": "arena"
+    },
+    {
+      "file": "Ceinture_de_mercure.png",
+      "name": "Ceinture de mercure",
+      "category": "classique"
+    },
+    {
+      "file": "Coiffe_de_Rabadon.png",
+      "name": "Coiffe de Rabadon",
+      "category": "classique"
+    },
+    {
+      "file": "Vertu_radieuse.png",
+      "name": "Vertu radieuse",
+      "category": "arena"
+    },
+    {
+      "file": "Présage_de_Randuin.png",
+      "name": "Présage de Randuin",
+      "category": "classique"
+    },
+    {
+      "file": "Canon_ultrarapide.png",
+      "name": "Canon ultrarapide",
+      "category": "classique"
+    },
+    {
+      "file": "Hydre_vorace.png",
+      "name": "Hydre vorace",
+      "category": "classique"
+    },
+    {
+      "file": "Fracture_de_la_réalité.png",
+      "name": "Fracture de la réalité",
+      "category": "arena"
+    },
+    {
+      "file": "Tribut_du_faucheur.png",
+      "name": "Tribut du faucheur",
+      "category": "arena"
+    },
+    {
+      "file": "Cristal_de_rubis.png",
+      "name": "Cristal de rubis",
+      "category": "classique"
+    },
+    {
+      "file": "Rectrix.png",
+      "name": "Rectrix",
+      "category": "classique"
+    },
+    {
+      "file": "Arc_courbe.png",
+      "name": "Arc courbe",
+      "category": "classique"
+    },
+    {
+      "file": "Rédemption.png",
+      "name": "Rédemption",
+      "category": "classique"
+    },
+    {
+      "file": "Potion_rechargeable.png",
+      "name": "Potion rechargeable",
+      "category": "classique"
+    },
+    {
+      "file": "Régicide.png",
+      "name": "Régicide",
+      "category": "arena"
+    },
+    {
+      "file": "Collier_rafra_chissant.png",
+      "name": "Collier rafraîchissant",
+      "category": "classique"
+    },
+    {
+      "file": "Réverbération.png",
+      "name": "Réverbération",
+      "category": "arena"
+    },
+    {
+      "file": "Créateur_de_failles.png",
+      "name": "Créateur de failles",
+      "category": "classique"
+    },
+    {
+      "file": "B_ton_séculaire.png",
+      "name": "Bâton séculaire",
+      "category": "classique"
+    },
+    {
+      "file": "Ouragan_de_Runaan.png",
+      "name": "Ouragan de Runaan",
+      "category": "classique"
+    },
+    {
+      "file": "Sculpteur_de_runes.png",
+      "name": "Sculpteur de runes",
+      "category": "arena"
+    },
+    {
+      "file": "Boussole_runique.png",
+      "name": "Boussole runique",
+      "category": "classique"
+    },
+    {
+      "file": "Sceptre_de_Rylai.png",
+      "name": "Sceptre de Rylai",
+      "category": "classique"
+    },
+    {
+      "file": "Don_de_sang.png",
+      "name": "Don de sang",
+      "category": "arena"
+    },
+    {
+      "file": "Cristal_de_saphir.png",
+      "name": "Cristal de saphir",
+      "category": "classique"
+    },
+    {
+      "file": "Bébé_Chardent.png",
+      "name": "Bébé Chardent",
+      "category": "classique"
+    },
+    {
+      "file": "Fronde_de_léclaireur.png",
+      "name": "Fronde de l'éclaireur",
+      "category": "classique"
+    },
+    {
+      "file": "Protège_bras_du_savant.png",
+      "name": "Protège-bras du savant",
+      "category": "classique"
+    },
+    {
+      "file": "Étreinte_de_séraphin.png",
+      "name": "Étreinte de séraphin",
+      "category": "classique"
+    },
+    {
+      "file": "Crochet_de_serpent.png",
+      "name": "Crochet de serpent",
+      "category": "classique"
+    },
+    {
+      "file": "Dague_dentelée.png",
+      "name": "Dague dentelée",
+      "category": "classique"
+    },
+    {
+      "file": "Rancune_de_Serylda.png",
+      "name": "Rancune de Serylda",
+      "category": "classique"
+    },
+    {
+      "file": "Flamme_ombre.png",
+      "name": "Flamme-ombre",
+      "category": "classique"
+    },
+    {
+      "file": "Protège_bras_pulvérisé.png",
+      "name": "Protège-bras pulvérisé",
+      "category": "classique"
+    },
+    {
+      "file": "Brillance.png",
+      "name": "Brillance",
+      "category": "classique"
+    },
+    {
+      "file": "Bouclier_de_roche_en_fusion.png",
+      "name": "Bouclier de roche en fusion",
+      "category": "arena"
+    },
+    {
+      "file": "Chant_de_guerre_de_Shurelya.png",
+      "name": "Chant de guerre de Shurelya",
+      "category": "classique"
+    },
+    {
+      "file": "Chaussures_légèrement_magiques.png",
+      "name": "Chaussures légèrement magiques",
+      "category": "classique"
+    },
+    {
+      "file": "Tra_neau_du_solstice.png",
+      "name": "Traîneau du solstice",
+      "category": "classique"
+    },
+    {
+      "file": "Chaussures_de_sorcier.png",
+      "name": "Chaussures de sorcier",
+      "category": "classique"
+    },
+    {
+      "file": "Lance_de_Shojin.png",
+      "name": "Lance de Shojin",
+      "category": "classique"
+    },
+    {
+      "file": "Manteau_de_spectre.png",
+      "name": "Manteau de spectre",
+      "category": "classique"
+    },
+    {
+      "file": "Bottes_de_mobilité.png",
+      "name": "Bottes de mobilité",
+      "category": "classique"
+    },
+    {
+      "file": "Visage_spirituel.png",
+      "name": "Visage spirituel",
+      "category": "classique"
+    },
+    {
+      "file": "Cruauté.png",
+      "name": "Cruauté",
+      "category": "arena"
+    },
+    {
+      "file": "B_ton_des_flots.png",
+      "name": "Bâton des flots",
+      "category": "classique"
+    },
+    {
+      "file": "Poignard_de_Statikk.png",
+      "name": "Poignard de Statikk",
+      "category": "classique"
+    },
+    {
+      "file": "Balise_camouflée.png",
+      "name": "Balise camouflée",
+      "category": "classique"
+    },
+    {
+      "file": "Sceau_dacier.png",
+      "name": "Sceau d’acier",
+      "category": "classique"
+    },
+    {
+      "file": "Gage_de_Sterak.png",
+      "name": "Gage de Sterak",
+      "category": "classique"
+    },
+    {
+      "file": "Lame_temp_te.png",
+      "name": "Lame tempête",
+      "category": "arena"
+    },
+    {
+      "file": "Onde_orageuse.png",
+      "name": "Onde orageuse",
+      "category": "classique"
+    },
+    {
+      "file": "Estropieur.png",
+      "name": "Estropieur",
+      "category": "classique"
+    },
+    {
+      "file": "Ciel_éventré.png",
+      "name": "Ciel éventré",
+      "category": "classique"
+    },
+    {
+      "file": "Égide_solaire.png",
+      "name": "Égide solaire",
+      "category": "classique"
+    },
+    {
+      "file": "Célérité_martiale.png",
+      "name": "Célérité martiale",
+      "category": "classique"
+    },
+    {
+      "file": "Épée_de_laube_florissante.png",
+      "name": "Épée de l’aube florissante",
+      "category": "arena"
+    },
+    {
+      "file": "Épée_du_divin.png",
+      "name": "Épée du divin",
+      "category": "arena"
+    },
+    {
+      "file": "Semelles_symbiotiques.png",
+      "name": "Semelles symbiotiques",
+      "category": "classique"
+    },
+    {
+      "file": "_mes_synchronisées.png",
+      "name": "Âmes synchronisées",
+      "category": "classique"
+    },
+    {
+      "file": "Larme_de_la_déesse.png",
+      "name": "Larme de la déesse",
+      "category": "classique"
+    },
+    {
+      "file": "Terminus.png",
+      "name": "Terminus",
+      "category": "classique"
+    },
+    {
+      "file": "Brutaliseur.png",
+      "name": "Brutaliseur",
+      "category": "classique"
+    },
+    {
+      "file": "Percepteur.png",
+      "name": "Percepteur",
+      "category": "classique"
+    },
+    {
+      "file": "Cotte_épineuse.png",
+      "name": "Cotte épineuse",
+      "category": "classique"
+    },
+    {
+      "file": "Tiamat.png",
+      "name": "Tiamat",
+      "category": "classique"
+    },
+    {
+      "file": "Hydre_titanesque.png",
+      "name": "Hydre titanesque",
+      "category": "classique"
+    },
+    {
+      "file": "Sac_de_lexplorateur.png",
+      "name": "Sac de l’explorateur",
+      "category": "classique"
+    },
+    {
+      "file": "Force_de_la_trinité.png",
+      "name": "Force de la trinité",
+      "category": "classique"
+    },
+    {
+      "file": "Foreuse.png",
+      "name": "Foreuse",
+      "category": "classique"
+    },
+    {
+      "file": "Fil_crépusculaire.png",
+      "name": "Fil crépusculaire",
+      "category": "arena"
+    },
+    {
+      "file": "Masque_jumeau.png",
+      "name": "Masque jumeau",
+      "category": "arena"
+    },
+    {
+      "file": "Glaive_dombre.png",
+      "name": "Glaive d’ombre",
+      "category": "classique"
+    },
+    {
+      "file": "Désespoir_infini.png",
+      "name": "Désespoir infini",
+      "category": "classique"
+    },
+    {
+      "file": "Barrière_verdoyante.png",
+      "name": "Barrière verdoyante",
+      "category": "classique"
+    },
+    {
+      "file": "Pierre_de_balise_vigilante.png",
+      "name": "Pierre de balise vigilante",
+      "category": "classique"
+    },
+    {
+      "file": "B_ton_du_vide.png",
+      "name": "Bâton du vide",
+      "category": "classique"
+    },
+    {
+      "file": "Cyclosabre_volta_que.png",
+      "name": "Cyclosabre voltaïque",
+      "category": "classique"
+    },
+    {
+      "file": "Mailles_du_gardien.png",
+      "name": "Mailles du gardien",
+      "category": "classique"
+    },
+    {
+      "file": "Armure_de_Warmog.png",
+      "name": "Armure de Warmog",
+      "category": "classique"
+    },
+    {
+      "file": "Pierre_de_balise_attentive.png",
+      "name": "Pierre de balise attentive",
+      "category": "classique"
+    },
+    {
+      "file": "Plaque_de_lune_ailée.png",
+      "name": "Plaque de lune ailée",
+      "category": "classique"
+    },
+    {
+      "file": "Approche_de_lhiver.png",
+      "name": "Approche de l’hiver",
+      "category": "classique"
+    },
+    {
+      "file": "Au_bout_du_rouleau.png",
+      "name": "Au bout du rouleau",
+      "category": "classique"
+    },
+    {
+      "file": "Promesse_silencieuse.png",
+      "name": "Promesse silencieuse",
+      "category": "arena"
+    },
+    {
+      "file": "Atlas.png",
+      "name": "Atlas",
+      "category": "classique"
+    },
+    {
+      "file": "Lame_spectre_de_Youmuu.png",
+      "name": "Lame spectre de Youmuu",
+      "category": "classique"
+    },
+    {
+      "file": "Flèches_des_Yun_Tal.png",
+      "name": "Flèches des Yun Tal",
+      "category": "classique"
+    },
+    {
+      "file": "Pique_dimensionnelle_de_ZazZak.png",
+      "name": "Pique dimensionnelle de Zak’Zak",
+      "category": "classique"
+    },
+    {
+      "file": "Zèle.png",
+      "name": "Zèle",
+      "category": "classique"
+    },
+    {
+      "file": "Convergence_de_Zeke.png",
+      "name": "Convergence de Zeke",
+      "category": "classique"
+    },
+    {
+      "file": "Sablier_de_Zhonya.png",
+      "name": "Sablier de Zhonya",
+      "category": "classique"
+    }
+  ]
+}
