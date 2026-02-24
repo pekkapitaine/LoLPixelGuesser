@@ -1,0 +1,97 @@
+:host { display: flex; flex: 1; }
+
+.container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: radial-gradient(circle at center, #101820, #05060a);
+  color: #fff;
+  min-height: 100vh;
+  padding: 80px 20px 40px;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.back-btn {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  padding: 10px 20px;
+  color: #f8d24b;
+  border: 1px solid #f8d24b;
+  border-radius: 16px;
+  background-color: transparent;
+  text-decoration: none;
+  transition: all 0.2s ease;
+
+  img { width: 16px; height: 12px; }
+  &:hover { background-color: #ffd85c; color: #000; transform: scale(1.05); }
+}
+
+h2 {
+  color: #f8d24b;
+  font-size: 2rem;
+  margin: 0 0 6px;
+}
+
+.subtitle {
+  color: #aaa;
+  margin: 0 0 40px;
+}
+
+.challenges-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  width: 100%;
+  max-width: 900px;
+}
+
+.challenge-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  background: rgba(20, 20, 30, 0.9);
+  border: 2px solid #f8d24b33;
+  border-radius: 20px;
+  padding: 30px 40px;
+  width: 220px;
+  text-decoration: none;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 0 20px #f8d24b22;
+
+  .challenge-icon { font-size: 2.5rem; }
+
+  h3 {
+    color: #f8d24b;
+    margin: 0;
+    font-size: 1.1rem;
+    text-align: center;
+  }
+
+  p {
+    color: #aaa;
+    font-size: 0.85rem;
+    margin: 0;
+    text-align: center;
+  }
+
+  &:hover {
+    border-color: #f8d24b88;
+    transform: translateY(-4px);
+    box-shadow: 0 8px 30px #f8d24b33;
+    cursor: url('/assets/cursors/cursor_red.png'), auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .container { padding: 70px 16px 30px; }
+  .challenge-card { width: 100%; max-width: 340px; padding: 20px 24px; flex-direction: row; gap: 16px; align-items: center; }
+  .challenge-card .challenge-icon { font-size: 2rem; flex-shrink: 0; }
+  .challenge-card h3, .challenge-card p { text-align: left; }
+}

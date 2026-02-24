@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Skill(keybindings-help)",
+      "Skill(keybindings-help:*)",
+      "Bash(python3 -c \"import json,sys; d=json.load\\(sys.stdin\\); print\\(len\\(d\\), ''items''\\)\")",
+      "Bash(python3 -c \":*)"
+    ]
+  }
+}

@@ -1,0 +1,60 @@
+<!-- Modale installation -->
+@if (pwa.showInstallModal()) {
+  <div class="modal" (click).self="pwa.closeInstallModal()">
+    <div class="install-content">
+      <div class="install-header">
+        <button [class.active]="pwa.activeTab() === 'android'" (click)="pwa.setActiveTab('android')">Android<br>Windows</button>
+        <button [class.active]="pwa.activeTab() === 'ios'" (click)="pwa.setActiveTab('ios')">iOS<br>Apple</button>
+        <span class="close" (click)="pwa.closeInstallModal()">✖</span>
+      </div>
+      <div class="install-body">
+        <p>Il semblerait que tu n'as pas encore installé l'app !</p>
+
+        @if (pwa.activeTab() === 'android') {
+          <div class="install-section">
+            <p>C'est tout simple, clique juste sur le bouton ci-dessous.</p>
+            <button class="install-btn" (click)="pwa.triggerInstall()">📲 Installer LPG</button>
+          </div>
+        }
+
+        @if (pwa.activeTab() === 'ios') {
+          <div class="install-section">
+            Installation en 4 étapes, en moins de 30s.<br>
+            <u><b>IMPORTANT</b></u> : L'installation ne peut se faire que dans Safari.<br>
+            <br>
+            <ol>
+              <li>Appuie sur les 3 points en bas à droite <img src="assets/ios_steps/step1.png" alt="Etape 1"></li>
+              <li>Appuie sur Partager <img src="assets/ios_steps/step2.png" alt="Etape 2"></li>
+              <li>Choisis 'Sur l'écran d'accueil' <img src="assets/ios_steps/step3.png" alt="Etape 3"></li>
+              <li>Valide 'Ouvrir comme app web' puis 'Ajouter' <img src="assets/ios_steps/step4.png" alt="Etape 4"></li>
+            </ol>
+            Et voilà !
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+}
+
+<!-- Modale mise à jour -->
+@if (pwa.showUpdateModal()) {
+  <div class="modal">
+    <div class="install-content">
+      <div class="install-header" style="justify-content: space-between;">
+        NOUVELLE MAJ DISPONIBLE !!!
+        <span class="close" (click)="pwa.closeUpdateModal()">✖</span>
+      </div>
+      <div class="install-body">
+        <button class="install-btn" (click)="pwa.triggerUpdate()">📲 Mettre à jour LPG</button>
+        <ul>
+          <li>V1 (actuelle)
+            <ul>
+              <li>Mode Infini avec 4 difficultés</li>
+              <li>Inclusions de skins possible</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+}

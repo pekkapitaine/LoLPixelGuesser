@@ -1,0 +1,34 @@
+<div class="container" id="welcome-screen">
+  <img src="assets/interface/LPG_Title.png" alt="LoL Pixel Guesser" class="game-logo">
+
+  <div class="modes-container">
+    <!-- MODE INFINI -->
+    <div class="mode-section">
+      <h2>♾️ Mode Infini</h2>
+      <div class="card-container">
+        @for (diff of difficulties; track diff) {
+          <div class="difficulty-card {{ diff }}" (click)="selectDifficulty(diff)">
+            <img src="assets/smileys/{{ diff }}_smiley.png" class="smiley" [alt]="labels[diff].label">
+            <h3>{{ labels[diff].label }}</h3>
+            <p>{{ labels[diff].description }}</p>
+          </div> 
+        }
+      </div>
+      <div class="skin-option">
+        <input type="checkbox" id="include-skins" [(ngModel)]="includeSkins">
+        <label for="include-skins">Inclure les skins</label>
+      </div>
+    </div>
+
+    <!-- MODE DÉFI -->
+    <div class="mode-section">
+      <h2>⚡ Mode Défi</h2>
+      <p>Le divertissement à son prime</p>
+      <a routerLink="/challenge" class="challenge-btn">Jouer</a>
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2025 LPG LolPixelGuesser. Tous droits réservés. Pekkapitaine corp.</p>
+  </footer>
+</div>

@@ -1,0 +1,218 @@
+:host {
+  display: flex;
+  flex: 1;
+}
+
+#welcome-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: center;
+  gap: 40px;
+  width: 100%;
+  background: radial-gradient(circle at center, #101820, #05060a);
+  color: #fff;
+  flex: 1;
+  min-height: calc(100vh - 60px);
+  box-sizing: border-box;
+}
+
+.game-logo {
+  width: auto;
+  height: 20vh;
+  margin-top: 30px;
+  filter: drop-shadow(0 0 20px #f8d24b80);
+  image-rendering: crisp-edges;
+  image-rendering: pixelated;
+}
+
+.modes-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 50px;
+  width: 100%;
+  max-width: 1400px;
+}
+
+.mode-section {
+  background: rgba(20, 20, 30, 0.9);
+  border: 2px solid #f8d24b33;
+  border-radius: 20px;
+  padding: 25px 35px;
+  width: 500px;
+  box-shadow: 0 0 20px #f8d24b33;
+
+  h2 {
+    color: #f8d24b;
+    margin: 0;
+    font-size: xx-large;
+  }
+}
+
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+  margin-top: 15px;
+}
+
+.difficulty-card {
+  border-radius: 15px;
+  padding: 20px 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 1px solid #555;
+  backdrop-filter: blur(2px);
+
+  &.facile   { background: linear-gradient(45deg, rgba(0,188,255,.55) 0%, rgba(0,188,255,.35) 25%, rgba(0,188,255,.15) 50%, #111 100%); }
+  &.moyen    { background: linear-gradient(45deg, rgba(0,238,2,.55) 0%, rgba(0,238,2,.35) 25%, rgba(0,238,2,.15) 50%, #111 100%); }
+  &.difficile{ background: linear-gradient(45deg, rgba(255,221,0,.55) 0%, rgba(255,221,0,.35) 25%, rgba(255,221,0,.15) 50%, #111 100%); }
+  &.extreme  { background: linear-gradient(45deg, rgba(255,26,10,.55) 0%, rgba(255,26,10,.35) 25%, rgba(255,26,10,.15) 50%, #111 100%); }
+
+  &:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px #f8d24b55;
+    cursor: url('/assets/cursors/cursor_red.png'), auto;
+  }
+
+  h3 {
+    font-size: 1.4rem;
+    color: #f8d24b;
+    margin: 5px 0;
+  }
+}
+
+.smiley {
+  width: 45px;
+  height: 45px;
+  margin-bottom: 5px;
+}
+
+.skin-option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 20px;
+  justify-content: center;
+  font-weight: bold;
+  color: #f8d24b;
+  font-size: 1.1rem;
+
+  input[type='checkbox'] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 50px;
+    height: 24px;
+    background: #222;
+    border-radius: 12px;
+    position: relative;
+    cursor: pointer;
+    transition: background 0.3s ease;
+
+    &::after {
+      content: '';
+      width: 20px;
+      height: 20px;
+      background: #f8d24b;
+      border-radius: 50%;
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      transition: all 0.3s ease;
+    }
+
+    &:checked { background: #444; }
+    &:checked::after { transform: translateX(26px); }
+  }
+
+  label { cursor: pointer; }
+}
+
+.challenge-btn {
+  display: inline-block;
+  background: #f8d24b;
+  color: #111;
+  font-weight: bold;
+  border: none;
+  border-radius: 10px;
+  padding: 12px 30px;
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.3s ease;
+  margin-top: 20px;
+  text-decoration: none;
+
+  &:hover {
+    background: #ffd85c;
+    transform: scale(1.05);
+    cursor: url('/assets/cursors/cursor_red.png'), auto;
+  }
+}
+
+footer {
+  position: static;
+  bottom: 0;
+  width: 100%;
+  background-color: #111;
+  color: white;
+  text-align: center;
+  padding-block: clamp(6px, 1vh, 12px);
+  font-size: clamp(12px, 1.2vh, 16px);
+}
+
+@media (max-width: 768px) {
+  #welcome-screen {
+    gap: 20px;
+    min-height: 100dvh;
+  }
+
+  .game-logo {
+    height: 13vh;
+    margin-top: 20px;
+  }
+
+  .modes-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    padding: 0 12px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .mode-section {
+    width: 100%;
+    padding: 14px;
+    border-radius: 14px;
+
+    h2 { font-size: 1.2rem; }
+  }
+
+  .card-container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+    margin-top: 10px;
+  }
+
+  .difficulty-card {
+    padding: 10px 6px;
+    border-radius: 10px;
+
+    h3 { font-size: 0.95rem; margin: 4px 0; }
+    p { display: none; }
+  }
+
+  .smiley { width: 28px; height: 28px; margin-bottom: 3px; }
+
+  .skin-option {
+    margin-top: 12px;
+    font-size: 1rem;
+  }
+
+  .challenge-btn {
+    padding: 10px 24px;
+    margin-top: 12px;
+  }
+}
