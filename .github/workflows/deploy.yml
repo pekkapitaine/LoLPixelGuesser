@@ -13,7 +13,7 @@ jobs:
         with:
           node-version: '20'
       - run: npm ci
-      - run: npm run build -- --base-href "/guess-the-champ/"
+      - run: npm run build -- --base-href "/LoLPixelGuesser/"
       - uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
