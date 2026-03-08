@@ -75,7 +75,7 @@
   &:hover {
     transform: scale(1.05);
     box-shadow: 0 0 15px #f8d24b55;
-    cursor: url('/assets/cursors/cursor_red.png'), auto;
+    cursor: var(--cursor-red), auto;
   }
 
   h3 {
@@ -147,13 +147,12 @@
   &:hover {
     background: #ffd85c;
     transform: scale(1.05);
-    cursor: url('/assets/cursors/cursor_red.png'), auto;
+    cursor: var(--cursor-red), auto;
   }
 }
 
 footer {
-  position: static;
-  bottom: 0;
+  margin-top: auto;
   width: 100%;
   background-color: #111;
   color: white;

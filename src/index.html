@@ -26,6 +26,10 @@
       }
       // Fix absolute asset paths for sub-path deployments (GitHub Pages)
       var base = document.querySelector('base') ? document.querySelector('base').getAttribute('href') : '/';
+      var cursorBlue = 'url("' + base + 'assets/cursors/cursor_blue.png")';
+      var cursorRed = 'url("' + base + 'assets/cursors/cursor_red.png")';
+      document.documentElement.style.setProperty('--cursor-blue', cursorBlue);
+      document.documentElement.style.setProperty('--cursor-red', cursorRed);
       var style = document.createElement('style');
       style.textContent = [
         '@font-face {',
@@ -35,8 +39,8 @@
         '  font-stretch: 75% 100%;',
         '  font-style: normal;',
         '}',
-        'html, body { cursor: url("' + base + 'assets/cursors/cursor_blue.png"), auto; }',
-        'html:active, body:active { cursor: url("' + base + 'assets/cursors/cursor_red.png"), auto; }'
+        'html, body { cursor: ' + cursorBlue + ', auto; }',
+        'html:active, body:active { cursor: ' + cursorRed + ', auto; }'
       ].join('');
       document.head.appendChild(style);
     }(window.location))

@@ -119,6 +119,11 @@ footer {
   font-weight: bold;
   color: #f8d24b;
   font-size: 1.1rem;
+
+}
+
+.skin-option:hover {
+    cursor : url(./assets/cursors/cursor_red.png), auto;
 }
 
 /* Hide default checkbox */
