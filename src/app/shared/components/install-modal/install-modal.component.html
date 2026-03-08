@@ -12,12 +12,8 @@
 
         @if (pwa.activeTab() === 'android') {
           <div class="install-section">
-            @if (pwa.canInstall) {
-              <p>C'est tout simple, clique juste sur le bouton ci-dessous.</p>
-              <button class="install-btn" (click)="pwa.triggerInstall()">📲 Installer LPG</button>
-            } @else {
-              <p>Pour installer l'app, utilise le menu de ton navigateur (⋮) puis "Ajouter à l'écran d'accueil" ou "Installer l'application".</p>
-            }
+            <p>C'est tout simple, clique juste sur le bouton ci-dessous.</p>
+            <button class="install-btn" (click)="pwa.triggerInstall()">📲 Installer LPG</button>
           </div>
         }
 

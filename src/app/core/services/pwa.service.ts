@@ -10,10 +10,9 @@ export class PwaService {
   readonly activeTab = signal<'android' | 'ios'>('android');
 
   get isInstalled(): boolean {
-    if (this.isIOS) {
-      return (window.navigator as any).standalone === true;
-    }
-    return window.matchMedia('(display-mode: standalone)').matches;
+    const standalone = window.matchMedia('(display-mode: standalone)').matches;
+    const iosInstalled = this.isIOS && !/Safari/i.test(navigator.userAgent);
+    return standalone || iosInstalled;
   }
 
   init(): void {
