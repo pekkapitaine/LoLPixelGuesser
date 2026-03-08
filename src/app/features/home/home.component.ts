@@ -3,7 +3,10 @@ import { Router, RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { GameService } from '../../core/services/game.service';
 import { PwaService } from '../../core/services/pwa.service';
+import { ProfileService } from '../../core/services/profile.service';
+import { TrophyService } from '../../core/services/trophy.service';
 import { Difficulty, DIFFICULTY_LABELS } from '../../core/models/champion.model';
+import { AVATARS } from '../../core/models/profile.model';
 
 @Component({
   selector: 'app-home',
@@ -16,6 +19,11 @@ export class HomeComponent implements OnInit {
   private router = inject(Router);
   private gameService = inject(GameService);
   private pwa = inject(PwaService);
+  readonly profileService = inject(ProfileService);
+  readonly trophyService = inject(TrophyService);
+  readonly avatars = AVATARS;
+
+  get profile() { return this.profileService.profile(); }
 
   ngOnInit(): void {
     setTimeout(() => this.pwa.checkAndShowInstallModal(), 1000);

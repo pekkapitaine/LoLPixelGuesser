@@ -1,4 +1,17 @@
 <div class="container" id="welcome-screen">
+
+  <!-- Icons top-left -->
+  <div class="top-icons">
+    <a routerLink="/profile" class="top-icon" title="Profil">
+      <span class="top-icon-emoji">{{ avatars[profile.avatarIndex] }}</span>
+      <span class="top-icon-label">{{ profile.pseudo }}</span>
+    </a>
+    <a routerLink="/trophies" class="top-icon" title="Trophées">
+      <span class="top-icon-emoji">🏆</span>
+      <span class="top-icon-label">{{ trophyService.unlockedCount() }}/{{ trophyService.trophies().length }}</span>
+    </a>
+  </div>
+
   <img src="assets/interface/LPG_Title.png" alt="LoL Pixel Guesser" class="game-logo">
 
   <div class="modes-container">

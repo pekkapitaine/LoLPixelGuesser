@@ -1,0 +1,40 @@
+<div class="trophies-page">
+  <div class="page-header">
+    <a routerLink="/" class="back-btn">← Retour</a>
+    <h1>Trophées</h1>
+    <div class="progress">
+      {{ trophyService.unlockedCount() }} / {{ trophyService.trophies().length }}
+    </div>
+  </div>
+
+  <div class="progress-bar-wrap">
+    <div
+      class="progress-bar-fill"
+      [style.width.%]="(trophyService.unlockedCount() / trophyService.trophies().length) * 100"
+    ></div>
+  </div>
+
+  <div class="trophies-grid">
+    @for (trophy of trophyService.trophies(); track trophy.id) {
+      <div
+        class="trophy-card"
+        [class.unlocked]="trophy.unlocked"
+        [class.locked]="!trophy.unlocked"
+        [style.--t-color]="trophy.color"
+      >
+        <div class="trophy-glow"></div>
+        <div class="trophy-icon">{{ trophy.unlocked ? trophy.icon : '🔒' }}</div>
+        <div class="trophy-info">
+          <div class="trophy-title">{{ trophy.unlocked ? trophy.title : '???' }}</div>
+          <div class="trophy-desc">{{ trophy.unlocked ? trophy.description : 'Trophée verrouillé' }}</div>
+          @if (trophy.unlocked && trophy.unlockedAt) {
+            <div class="trophy-date">Débloqué le {{ trophy.unlockedAt }}</div>
+          }
+        </div>
+        @if (trophy.unlocked) {
+          <div class="trophy-check">✓</div>
+        }
+      </div>
+    }
+  </div>
+</div>

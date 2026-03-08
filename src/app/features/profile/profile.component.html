@@ -1,0 +1,72 @@
+<div class="profile-page">
+  <div class="page-header">
+    <a routerLink="/" class="back-btn">← Retour</a>
+    <h1>Mon Profil</h1>
+  </div>
+
+  <div class="profile-content">
+
+    <!-- Avatar actuel -->
+    <div class="current-avatar">
+      <div class="avatar-display">{{ avatars[profile.avatarIndex] }}</div>
+      <input
+        class="pseudo-input"
+        [(ngModel)]="pseudo"
+        maxlength="20"
+        placeholder="Ton pseudo..."
+      />
+    </div>
+
+    <!-- Choix de l'avatar -->
+    <section class="section">
+      <h2>Avatar</h2>
+      <div class="avatar-grid">
+        @for (avatar of avatars; track $index) {
+          <div
+            class="avatar-option"
+            [class.selected]="profile.avatarIndex === $index"
+            (click)="selectAvatar($index)"
+          >{{ avatar }}</div>
+        }
+      </div>
+    </section>
+
+    <!-- Thème -->
+    <section class="section">
+      <h2>Thème</h2>
+      <div class="theme-grid">
+        @for (theme of themes; track theme.id) {
+          <div
+            class="theme-option"
+            [class.selected]="profile.theme === theme.id"
+            [style.--t-primary]="theme.primary"
+            [style.--t-bg]="theme.bg"
+            (click)="selectTheme(theme.id)"
+          >
+            <div class="theme-preview" [style.background]="theme.bg">
+              <div class="theme-bar" [style.background]="theme.primary"></div>
+            </div>
+            <span>{{ theme.label }}</span>
+          </div>
+        }
+      </div>
+    </section>
+
+    <!-- Badges débloqués -->
+    <section class="section">
+      <h2>Trophées débloqués <span class="count">{{ trophyService.unlockedCount() }}</span></h2>
+      <div class="badges-grid">
+        @if (trophyService.unlockedTrophies().length === 0) {
+          <p class="no-badges">Aucun trophée pour l'instant... joue pour en débloquer !</p>
+        }
+        @for (trophy of trophyService.unlockedTrophies(); track trophy.id) {
+          <div class="badge" [style.--b-color]="trophy.color">
+            <span class="badge-icon">{{ trophy.icon }}</span>
+            <span class="badge-title">{{ trophy.title }}</span>
+          </div>
+        }
+      </div>
+    </section>
+
+  </div>
+</div>

@@ -54,8 +54,12 @@ export class PwaService {
     return !!this.deferredPrompt;
   }
 
+  get isDismissed(): boolean {
+    return localStorage.getItem('lpg_install_dismissed') === '1';
+  }
+
   checkAndShowInstallModal(): void {
-    if (this.isInstalled) return;
+    if (this.isInstalled || this.isDismissed) return;
     this.activeTab.set(this.isIOS ? 'ios' : 'android');
     this.showInstallModal.set(true);
   }
@@ -77,6 +81,7 @@ export class PwaService {
   }
 
   closeInstallModal(): void {
+    localStorage.setItem('lpg_install_dismissed', '1');
     this.showInstallModal.set(false);
   }
 

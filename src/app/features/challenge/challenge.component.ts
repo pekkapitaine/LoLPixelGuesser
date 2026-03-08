@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { TrophyService } from '../../core/services/trophy.service';
 
 @Component({
   selector: 'app-challenge',
@@ -8,4 +9,10 @@ import { RouterLink } from '@angular/router';
   templateUrl: './challenge.component.html',
   styleUrl: './challenge.component.scss',
 })
-export class ChallengeComponent {}
+export class ChallengeComponent implements OnInit {
+  private trophyService = inject(TrophyService);
+
+  ngOnInit(): void {
+    this.trophyService.unlock('challenge_mode');
+  }
+}

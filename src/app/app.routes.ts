@@ -17,5 +17,13 @@ export const routes: Routes = [
     path: 'challenge/item',
     loadComponent: () => import('./features/challenge/item-game/item-game.component').then(m => m.ItemGameComponent),
   },
+  {
+    path: 'profile',
+    loadComponent: () => import('./features/profile/profile.component').then(m => m.ProfileComponent),
+  },
+  {
+    path: 'trophies',
+    loadComponent: () => import('./features/trophies/trophies.component').then(m => m.TrophiesComponent),
+  },
   { path: '**', redirectTo: '' },
 ];

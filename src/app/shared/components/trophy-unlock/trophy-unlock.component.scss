@@ -1,0 +1,109 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(4px);
+  animation: fadeIn 0.3s ease;
+  overflow: hidden;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.confetti-piece {
+  position: absolute;
+  top: 0;
+  border-radius: 2px;
+  animation: confettiFall linear forwards;
+}
+
+@keyframes confettiFall {
+  0%   { transform: translateY(-20px) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(110vh) rotate(720deg); opacity: 0; }
+}
+
+.trophy-card {
+  position: relative;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  border: 2px solid var(--trophy-color, #f8d24b);
+  border-radius: 24px;
+  padding: 40px 50px;
+  text-align: center;
+  box-shadow: 0 0 60px var(--trophy-color, #f8d24b), 0 0 120px rgba(0,0,0,0.8);
+  animation: trophyPop 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
+  max-width: 340px;
+  width: 90vw;
+  z-index: 1;
+}
+
+@keyframes trophyPop {
+  0%   { transform: scale(0.3); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.trophy-glow {
+  position: absolute;
+  inset: -2px;
+  border-radius: 24px;
+  background: var(--trophy-color, #f8d24b);
+  opacity: 0.15;
+  filter: blur(20px);
+  animation: pulse 1.5s ease-in-out infinite;
+  z-index: -1;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.1; }
+  50%       { opacity: 0.3; }
+}
+
+.trophy-label {
+  font-size: 0.85rem;
+  color: var(--trophy-color, #f8d24b);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+  font-weight: bold;
+}
+
+.trophy-icon {
+  font-size: 5rem;
+  margin: 8px 0;
+  filter: drop-shadow(0 0 20px var(--trophy-color, #f8d24b));
+  animation: iconFloat 2s ease-in-out infinite;
+}
+
+@keyframes iconFloat {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-8px); }
+}
+
+.trophy-title {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: var(--trophy-color, #f8d24b);
+  margin: 12px 0 8px;
+}
+
+.trophy-desc {
+  color: #ccc;
+  font-size: 1rem;
+  margin-bottom: 24px;
+}
+
+.trophy-tap {
+  font-size: 0.75rem;
+  color: #666;
+  animation: blink 1.5s ease-in-out infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.3; }
+}

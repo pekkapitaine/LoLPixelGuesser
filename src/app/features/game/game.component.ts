@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { GameService } from '../../core/services/game.service';
 import { ChampionService } from '../../core/services/champion.service';
 import { TimerService } from '../../core/services/timer.service';
+import { TrophyService } from '../../core/services/trophy.service';
 import { Difficulty, DIFFICULTY_LABELS } from '../../core/models/champion.model';
 import { HistoryEntry } from '../../core/models/game.model';
 
@@ -23,6 +24,7 @@ export class GameComponent implements OnInit, OnDestroy {
   private router = inject(Router);
   private gameService = inject(GameService);
   private championService = inject(ChampionService);
+  private trophyService = inject(TrophyService);
   readonly timer = inject(TimerService);
 
   // ---- State ----
@@ -52,6 +54,7 @@ export class GameComponent implements OnInit, OnDestroy {
     this.difficulty.set(diff ?? 'facile');
     this.gameService.setDifficulty(this.difficulty());
     this.gameService.resetHistory();
+    if (this.difficulty() === 'extreme') this.trophyService.unlock('extreme_mode');
 
     await Promise.all([
       this.championService.loadGameData(),
@@ -143,6 +146,8 @@ export class GameComponent implements OnInit, OnDestroy {
     if (normalized === correct) {
       this.timer.incrementCorrect();
       this.gameService.addHistory({ champion: this.currentChampion, correct: true });
+      this.trophyService.checkCorrectCount(this.timer.stats().correct);
+      this.trophyService.checkStreak(this.timer.stats().streak);
       this.showFeedback('correct');
       if (this.currentSoluce) this.champImageSrc.set(this.currentSoluce);
       this.feedbackTimeout = setTimeout(() => {

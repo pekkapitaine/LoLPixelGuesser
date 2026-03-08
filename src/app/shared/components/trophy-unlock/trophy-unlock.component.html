@@ -1,0 +1,27 @@
+@if (trophy.pendingUnlock(); as t) {
+  <div class="overlay" (click)="close()">
+    <!-- Confetti -->
+    @for (c of confetti; track $index) {
+      <div
+        class="confetti-piece"
+        [style.left.%]="c.x"
+        [style.background]="c.color"
+        [style.width.px]="c.size"
+        [style.height.px]="c.size * 0.6"
+        [style.animationDuration]="c.speed + 's'"
+        [style.animationDelay]="($index * 0.03) + 's'"
+        [style.transform]="'rotate(' + c.rotation + 'deg)'"
+      ></div>
+    }
+
+    <!-- Trophy card -->
+    <div class="trophy-card" [style.--trophy-color]="t.color" (animationstart)="onAnimationStart()">
+      <div class="trophy-glow"></div>
+      <div class="trophy-label">🏆 Trophée débloqué !</div>
+      <div class="trophy-icon">{{ t.icon }}</div>
+      <div class="trophy-title">{{ t.title }}</div>
+      <div class="trophy-desc">{{ t.description }}</div>
+      <div class="trophy-tap">Appuie pour continuer</div>
+    </div>
+  </div>
+}
