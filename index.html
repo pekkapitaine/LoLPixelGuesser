@@ -26,6 +26,10 @@
       }
       // Fix absolute asset paths for sub-path deployments (GitHub Pages)
       var base = document.querySelector('base') ? document.querySelector('base').getAttribute('href') : '/';
+      var cursorBlue = 'url("' + base + 'assets/cursors/cursor_blue.png")';
+      var cursorRed = 'url("' + base + 'assets/cursors/cursor_red.png")';
+      document.documentElement.style.setProperty('--cursor-blue', cursorBlue);
+      document.documentElement.style.setProperty('--cursor-red', cursorRed);
       var style = document.createElement('style');
       style.textContent = [
         '@font-face {',
@@ -35,8 +39,8 @@
         '  font-stretch: 75% 100%;',
         '  font-style: normal;',
         '}',
-        'html, body { cursor: url("' + base + 'assets/cursors/cursor_blue.png"), auto; }',
-        'html:active, body:active { cursor: url("' + base + 'assets/cursors/cursor_red.png"), auto; }'
+        'html, body { cursor: ' + cursorBlue + ', auto; }',
+        'html:active, body:active { cursor: ' + cursorRed + ', auto; }'
       ].join('');
       document.head.appendChild(style);
     }(window.location))
@@ -44,5 +48,5 @@
 <style>*,*:before,*:after{box-sizing:border-box}html,body{margin:0;padding:0;min-height:100%;display:flex;flex-direction:column;font-family:DynaPuff,system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,sans-serif;font-weight:400;font-stretch:80%;font-style:normal;-moz-user-select:none;-webkit-user-select:none;user-select:none;font-size:clamp(12px,4vw,20px);scrollbar-width:thin;scrollbar-color:#f8d24b #1a1d22;background:#1e1e2f;color:#fff;overflow-y:auto}app-root{display:flex;flex-direction:column;flex:1;min-height:100vh}</style><link rel="stylesheet" href="styles-U5FUAM5J.css" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="styles-U5FUAM5J.css"></noscript></head>
 <body>
   <app-root></app-root>
-<link rel="modulepreload" href="chunk-CDHMGMKZ.js"><script src="polyfills-B6TNHZQ6.js" type="module"></script><script src="main-VGMSPMSR.js" type="module"></script></body>
+<link rel="modulepreload" href="chunk-XCLQF7BF.js"><link rel="modulepreload" href="chunk-CDHMGMKZ.js"><script src="polyfills-B6TNHZQ6.js" type="module"></script><script src="main-H2FHKGRB.js" type="module"></script></body>
 </html>
