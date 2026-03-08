@@ -10,10 +10,10 @@ export class PwaService {
   readonly activeTab = signal<'android' | 'ios'>('android');
 
   get isInstalled(): boolean {
-    return (
-      window.matchMedia('(display-mode: standalone)').matches ||
-      (window.navigator as any).standalone === true
-    );
+    if (this.isIOS) {
+      return (window.navigator as any).standalone === true;
+    }
+    return window.matchMedia('(display-mode: standalone)').matches;
   }
 
   init(): void {
@@ -51,19 +51,14 @@ export class PwaService {
     });
   }
 
+  get canInstall(): boolean {
+    return !!this.deferredPrompt;
+  }
+
   checkAndShowInstallModal(): void {
     if (this.isInstalled) return;
-
-    if (this.deferredPrompt) {
-      this.activeTab.set('android');
-      this.showInstallModal.set(true);
-      return;
-    }
-
-    if (this.isIOS) {
-      this.activeTab.set('ios');
-      this.showInstallModal.set(true);
-    }
+    this.activeTab.set(this.isIOS ? 'ios' : 'android');
+    this.showInstallModal.set(true);
   }
 
   async triggerInstall(): Promise<void> {
