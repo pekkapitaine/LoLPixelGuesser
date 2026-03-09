@@ -15,7 +15,13 @@
     }
 
     <!-- Trophy card -->
-    <div class="trophy-card" [style.--trophy-color]="t.color" (animationstart)="onAnimationStart()">
+    <div class="trophy-card"
+      [class.rarity-common]="t.rarity === 'common'"
+      [class.rarity-rare]="t.rarity === 'rare'"
+      [class.rarity-legendary]="t.rarity === 'legendary'"
+      [style.--trophy-color]="t.color"
+      (animationstart)="onAnimationStart()"
+    >
       <div class="trophy-glow"></div>
       <div class="trophy-label">🏆 Trophée débloqué !</div>
       <div class="trophy-icon">{{ t.icon }}</div>

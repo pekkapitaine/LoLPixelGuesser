@@ -1,3 +1,9 @@
+@property --fire-angle {
+  syntax: '<angle>';
+  inherits: false;
+  initial-value: 0deg;
+}
+
 :host {
   display: flex;
   flex-direction: column;
@@ -58,13 +64,74 @@
   box-shadow: 0 0 8px var(--theme-primary, #f8d24b);
 }
 
+.trophy-section {
+  padding: 0 24px 8px;
+
+  &:last-child { padding-bottom: 32px; }
+}
+
+.section-title {
+  font-size: 1rem;
+  font-weight: bold;
+  color: rgba(255,255,255,0.5);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin: 24px 0 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
 .trophies-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 16px;
-  padding: 24px;
+  gap: 14px;
 }
 
+/* ── Rarity stars ────────────────────────────────────────── */
+.rarity-stars {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  display: grid;
+  z-index: 2;
+
+  .star {
+    font-size: 0.7rem;
+    line-height: 1;
+    color: var(--t-color, #f8d24b);
+    filter: drop-shadow(0 0 3px var(--t-color, #f8d24b));
+  }
+
+  /* 1 star: single centered */
+  &.stars-1 {
+    grid-template-columns: 1fr;
+    .star { text-align: center; }
+  }
+
+  /* 2 stars: side by side */
+  &.stars-2 {
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+  }
+
+  /* 3 stars: triangle — 1 on top centered, 2 below */
+  &.stars-3 {
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+
+    .star:first-child {
+      grid-column: 1 / -1;
+      text-align: center;
+    }
+  }
+}
+
+.locked .rarity-stars .star {
+  color: rgba(255,255,255,0.2);
+  filter: none;
+}
+
+/* ── Base card ───────────────────────────────────────────── */
 .trophy-card {
   position: relative;
   display: flex;
@@ -72,45 +139,184 @@
   gap: 16px;
   padding: 20px;
   border-radius: 16px;
-  border: 2px solid;
+  border: 2px solid transparent;
   overflow: hidden;
-  transition: transform 0.2s, box-shadow 0.2s;
-
-  &.unlocked {
-    border-color: var(--t-color);
-    background: linear-gradient(135deg, rgba(0,0,0,0.6), rgba(0,0,0,0.4));
-    box-shadow: 0 4px 20px color-mix(in srgb, var(--t-color) 20%, transparent);
-
-    &:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 30px color-mix(in srgb, var(--t-color) 35%, transparent);
-    }
-
-    .trophy-glow {
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at top left, color-mix(in srgb, var(--t-color) 15%, transparent), transparent 60%);
-    }
-  }
+  transition: none;
+  background-clip: padding-box;
 
   &.locked {
     border-color: rgba(255,255,255,0.1);
     background: rgba(255,255,255,0.03);
     filter: grayscale(1);
-    opacity: 0.5;
+    opacity: 0.45;
   }
 }
 
+/* ── COMMON ──────────────────────────────────────────────── */
+.trophy-card.unlocked.rarity-common {
+  border-color: var(--t-color);
+  background: linear-gradient(135deg, rgba(0,0,0,0.65), rgba(0,0,0,0.45));
+  box-shadow: 0 6px 24px color-mix(in srgb, var(--t-color) 30%, transparent);
+
+  .trophy-glow {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at top left, color-mix(in srgb, var(--t-color) 10%, transparent), transparent 55%);
+  }
+}
+
+/* ── RARE ────────────────────────────────────────────────── */
+.trophy-card.unlocked.rarity-rare {
+  background: linear-gradient(135deg, rgba(0,0,0,0.7), rgba(0,0,0,0.5));
+
+  /* Animated shimmer border */
+  &::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: 18px;
+    background: linear-gradient(
+      var(--fire-angle),
+      var(--t-color),
+      transparent 40%,
+      transparent 60%,
+      var(--t-color)
+    );
+    animation: rare-spin 3s linear infinite;
+    z-index: -1;
+  }
+
+  /* Inner background to mask border gradient */
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 2px;
+    border-radius: 14px;
+    background: linear-gradient(135deg, #0d0d1a, #12121f);
+    z-index: -1;
+  }
+
+    transform: translateY(-3px);
+    box-shadow:
+      0 0 30px color-mix(in srgb, var(--t-color) 40%, transparent),
+      0 0 60px color-mix(in srgb, var(--t-color) 15%, transparent);
+
+  .trophy-glow {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 30% 30%, color-mix(in srgb, var(--t-color) 12%, transparent), transparent 65%);
+    animation: rare-pulse 2.5s ease-in-out infinite;
+  }
+
+  .trophy-icon {
+    animation: rare-float 3s ease-in-out infinite;
+  }
+}
+
+@keyframes rare-spin {
+  to { --fire-angle: 360deg; }
+}
+
+@keyframes rare-pulse {
+  0%, 100% { opacity: 0.6; }
+  50%       { opacity: 1; }
+}
+
+@keyframes rare-float {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-4px); }
+}
+
+/* ── LEGENDARY ───────────────────────────────────────────── */
+.trophy-card.unlocked.rarity-legendary {
+  background: linear-gradient(135deg, rgba(5,0,0,0.85), rgba(10,0,5,0.75));
+
+  /* Rotating fire border */
+  &::before {
+    content: '';
+    position: absolute;
+    inset: -3px;
+    border-radius: 20px;
+    background: conic-gradient(
+      from var(--fire-angle),
+      #ff4500, #ff8c00, #ffd700, #ff8c00,
+      #ff4500, #ff0000, #ff4500, #ff8c00,
+      #ffd700, #ff4500
+    );
+    animation: legendary-fire 2s linear infinite;
+    z-index: -1;
+  }
+
+  /* Dark inner fill */
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 3px;
+    border-radius: 13px;
+    background: linear-gradient(135deg, #0a0005, #120008);
+    z-index: -1;
+  }
+
+
+    transform: translateY(-4px) scale(1.01);
+    box-shadow:
+      0 0 35px rgba(255, 120, 0, 0.7),
+      0 0 80px rgba(255, 60, 0, 0.35),
+      0 0 120px rgba(255, 200, 0, 0.15);
+
+  .trophy-glow {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(circle at 20% 0%, rgba(255,100,0,0.2), transparent 50%),
+      radial-gradient(circle at 80% 100%, rgba(255,200,0,0.1), transparent 50%);
+    animation: legendary-glow 1.5s ease-in-out infinite;
+  }
+
+  .trophy-icon {
+    filter: drop-shadow(0 0 12px #ff8c00) drop-shadow(0 0 24px #ff4500);
+    animation: legendary-icon 2s ease-in-out infinite;
+  }
+
+  /* Sparks */
+  .trophy-check {
+    background: linear-gradient(135deg, #ff8c00, #ffd700);
+    box-shadow: 0 0 10px #ff8c00;
+    animation: legendary-check-pulse 1.5s ease-in-out infinite;
+  }
+}
+
+@keyframes legendary-fire {
+  to { --fire-angle: 360deg; }
+}
+
+@keyframes legendary-glow {
+  0%, 100% { opacity: 0.7; }
+  50%       { opacity: 1; }
+}
+
+@keyframes legendary-icon {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50%       { transform: translateY(-5px) scale(1.05); }
+}
+
+@keyframes legendary-check-pulse {
+  0%, 100% { box-shadow: 0 0 8px #ff8c00; }
+  50%       { box-shadow: 0 0 20px #ffd700, 0 0 8px #ff4500; }
+}
+
+/* ── Shared content ──────────────────────────────────────── */
 .trophy-icon {
   font-size: 2.8rem;
   flex-shrink: 0;
-  filter: drop-shadow(0 0 8px var(--t-color, transparent));
   position: relative;
+  z-index: 1;
 }
 
 .trophy-info {
   flex: 1;
   position: relative;
+  z-index: 1;
 }
 
 .trophy-title {
@@ -144,6 +350,7 @@
   font-size: 0.85rem;
   flex-shrink: 0;
   position: relative;
+  z-index: 1;
 }
 
 @media (max-width: 480px) {

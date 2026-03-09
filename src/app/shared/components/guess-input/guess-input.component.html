@@ -1,0 +1,24 @@
+<div class="guess-wrap">
+  <input
+    #inputEl
+    type="text"
+    [placeholder]="placeholder"
+    (input)="onInput($any($event.target).value)"
+    (keydown)="onKeydown($event)"
+    autocomplete="off"
+    autocorrect="off"
+    autocapitalize="off"
+    spellcheck="false"
+  >
+  @if (suggestions.length) {
+    <div class="suggestions">
+      @for (s of suggestions; track s; let i = $index) {
+        <div
+          class="suggestion-item"
+          [class.focused]="i === focusedIndex()"
+          (click)="selectItem(s)"
+        >{{ s }}</div>
+      }
+    </div>
+  }
+</div>

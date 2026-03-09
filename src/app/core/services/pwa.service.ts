@@ -6,6 +6,7 @@ export class PwaService {
 
   readonly showInstallModal = signal(false);
   readonly showUpdateModal = signal(false);
+  readonly showChangelog = signal(false);
   readonly isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
   readonly activeTab = signal<'android' | 'ios'>('android');
 
@@ -87,6 +88,14 @@ export class PwaService {
 
   closeUpdateModal(): void {
     this.showUpdateModal.set(false);
+  }
+
+  openChangelog(): void {
+    this.showChangelog.set(true);
+  }
+
+  closeChangelog(): void {
+    this.showChangelog.set(false);
   }
 
   setActiveTab(tab: 'android' | 'ios'): void {

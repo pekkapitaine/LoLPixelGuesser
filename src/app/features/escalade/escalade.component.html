@@ -1,0 +1,52 @@
+<div class="container">
+
+  <header class="top-bar">
+    <button class="back-btn" (click)="goBack()">← Retour</button>
+    <h2 class="mode-title">
+      📈 Escalade
+      @if (!gameOver()) { — Champion #{{ round() }} }
+      @else { — Game Over }
+    </h2>
+    <div class="best-inline">
+      <span class="best-label">🏅</span>
+      <span class="best-value">{{ escaladeService.bestScore() }}</span>
+    </div>
+  </header>
+
+  <div class="game-area">
+    <div class="image-container">
+      <app-pixel-image [src]="champImageSrc()" [feedback]="feedback()" [isLoading]="isLoading()" [overlay]="false" />
+    </div>
+  </div>
+
+  <div class="bottom-controls">
+    <!-- Pixel progress bar -->
+    <div class="pixel-bar-row">
+      <span class="pixel-bar-label">Pixelisation</span>
+      <div class="pixel-bar-wrap">
+        <div class="pixel-bar-fill" [style.width.%]="pixelBarPercent()"></div>
+      </div>
+    </div>
+
+    @if (!gameOver()) {
+      <app-guess-input
+        [suggestions]="suggestions()"
+        placeholder="Nom du champion..."
+        (queryChange)="onQueryChange($event)"
+        (submit)="selectSuggestion($event)"
+      />
+    } @else {
+      <div class="gameover-panel">
+        <div class="gameover-score">
+          <span class="score-number">{{ round() - 1 }}</span>
+          <span class="score-label">champion{{ round() - 1 > 1 ? 's' : '' }} trouvé{{ round() - 1 > 1 ? 's' : '' }}</span>
+        </div>
+        @if (isNewRecord()) {
+          <div class="new-record">🏆 Nouveau record !</div>
+        }
+        <div class="reveal">C'était : <strong>{{ revealedChampion() }}</strong></div>
+        <button class="restart-btn" (click)="restart()">↺ Rejouer</button>
+      </div>
+    }
+  </div>
+</div>

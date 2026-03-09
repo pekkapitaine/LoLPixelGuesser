@@ -14,27 +14,43 @@
     ></div>
   </div>
 
-  <div class="trophies-grid">
-    @for (trophy of trophyService.trophies(); track trophy.id) {
-      <div
-        class="trophy-card"
-        [class.unlocked]="trophy.unlocked"
-        [class.locked]="!trophy.unlocked"
-        [style.--t-color]="trophy.color"
-      >
-        <div class="trophy-glow"></div>
-        <div class="trophy-icon">{{ trophy.unlocked ? trophy.icon : '🔒' }}</div>
-        <div class="trophy-info">
-          <div class="trophy-title">{{ trophy.unlocked ? trophy.title : '???' }}</div>
-          <div class="trophy-desc">{{ trophy.unlocked ? trophy.description : 'Trophée verrouillé' }}</div>
-          @if (trophy.unlocked && trophy.unlockedAt) {
-            <div class="trophy-date">Débloqué le {{ trophy.unlockedAt }}</div>
-          }
-        </div>
-        @if (trophy.unlocked) {
-          <div class="trophy-check">✓</div>
+  @for (group of grouped(); track group.cat) {
+    <section class="trophy-section">
+      <h2 class="section-title">{{ group.label }}</h2>
+      <div class="trophies-grid">
+        @for (trophy of group.trophies; track trophy.id) {
+          <div
+            class="trophy-card"
+            [class.unlocked]="trophy.unlocked"
+            [class.locked]="!trophy.unlocked"
+            [class.rarity-common]="trophy.rarity === 'common'"
+            [class.rarity-rare]="trophy.rarity === 'rare'"
+            [class.rarity-legendary]="trophy.rarity === 'legendary'"
+            [style.--t-color]="trophy.color"
+          >
+            <div class="trophy-glow"></div>
+
+            <!-- Étoiles de rareté -->
+            <div class="rarity-stars" [class]="'stars-' + stars(trophy.rarity)">
+              @for (s of [].constructor(stars(trophy.rarity)); track $index) {
+                <span class="star">★</span>
+              }
+            </div>
+
+            <div class="trophy-icon">{{ trophy.unlocked ? trophy.icon : '🔒' }}</div>
+            <div class="trophy-info">
+              <div class="trophy-title">{{ trophy.isSecret && !trophy.unlocked ? '???' : trophy.title }}</div>
+              <div class="trophy-desc">{{ trophy.isSecret && !trophy.unlocked ? 'Trophée secret' : trophy.description }}</div>
+              @if (trophy.unlocked && trophy.unlockedAt) {
+                <div class="trophy-date">Débloqué le {{ trophy.unlockedAt }}</div>
+              }
+            </div>
+            @if (trophy.unlocked) {
+              <div class="trophy-check">✓</div>
+            }
+          </div>
         }
       </div>
-    }
-  </div>
+    </section>
+  }
 </div>

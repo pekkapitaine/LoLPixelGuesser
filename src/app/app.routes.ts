@@ -10,6 +10,10 @@ export const routes: Routes = [
     loadComponent: () => import('./features/game/game.component').then(m => m.GameComponent),
   },
   {
+    path: 'escalade',
+    loadComponent: () => import('./features/escalade/escalade.component').then(m => m.EscaladeComponent),
+  },
+  {
     path: 'challenge',
     loadComponent: () => import('./features/challenge/challenge.component').then(m => m.ChallengeComponent),
   },

@@ -39,8 +39,15 @@ export class ChampionService {
     return `ImagesChamps/${folder}/${entry.file}`;
   }
 
+  async pixelizeImageRaw(src: string, pixelSize: number): Promise<string> {
+    return this._pixelize(src, pixelSize);
+  }
+
   async pixelizeImage(src: string, difficulty: Difficulty): Promise<string> {
-    const pixelSize = DIFFICULTY_PIXEL_SIZES[difficulty];
+    return this._pixelize(src, DIFFICULTY_PIXEL_SIZES[difficulty]);
+  }
+
+  private async _pixelize(src: string, pixelSize: number): Promise<string> {
     const img = new Image();
     img.src = src;
 
@@ -89,8 +96,9 @@ export class ChampionService {
     return String(s || '')
       .normalize('NFD')
       .replace(/[\u0300-\u036f]/g, '')
-      .replace(/\s+/g, ' ')
-      .replace('_', ' ')
+      .replace(/['\u2019]/g, '')
+      .replace(/&/g, '')
+      .replace(/[_\s]+/g, ' ')
       .trim()
       .toLowerCase();
   }

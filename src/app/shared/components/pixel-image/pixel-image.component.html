@@ -1,0 +1,12 @@
+@if (isLoading) {
+  <div class="spinner"></div>
+} @else {
+  <img [src]="src" [alt]="alt">
+}
+<div class="feedback-overlay"
+  [class.visible]="overlay && feedback !== 'none'"
+  [class.correct]="feedback === 'correct'"
+  [class.wrong]="feedback === 'wrong'"
+>
+  {{ feedback === 'correct' ? '✅ Correct !' : '❌ Faux !' }}
+</div>

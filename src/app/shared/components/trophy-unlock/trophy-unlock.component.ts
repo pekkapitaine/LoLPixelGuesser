@@ -21,12 +21,13 @@ export class TrophyUnlockComponent implements OnInit, OnDestroy {
 
   onAnimationStart(): void {
     this.generateConfetti();
-    this.timer = setTimeout(() => this.trophy.clearPendingUnlock(), 4000);
+    this.timer = setTimeout(() => this.trophy.clearPendingUnlock(), 10000);
   }
 
   generateConfetti(): void {
+
     const colors = ['#f8d24b', '#f43f5e', '#4ade80', '#38bdf8', '#a78bfa', '#fb923c', '#fff'];
-    this.confetti = Array.from({ length: 60 }, (_, i) => ({
+    this.confetti = Array.from({ length: 80 }, (_, i) => ({
       x: Math.random() * 100,
       y: -10 - Math.random() * 20,
       color: colors[Math.floor(Math.random() * colors.length)],

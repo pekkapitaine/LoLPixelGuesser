@@ -89,6 +89,22 @@ h2 {
   }
 }
 
+.escalade-card {
+  border-color: #4ade8033;
+  box-shadow: 0 0 20px #4ade8011;
+  &:hover { border-color: #4ade8088; box-shadow: 0 8px 30px #4ade8033; }
+}
+
+.best-score-badge {
+  margin-top: 4px;
+  background: rgba(74, 222, 128, 0.12);
+  border: 1px solid rgba(74, 222, 128, 0.3);
+  border-radius: 20px;
+  padding: 3px 12px;
+  font-size: 0.78rem;
+  color: #4ade80;
+}
+
 @media (max-width: 768px) {
   .container { padding: 70px 16px 30px; }
   .challenge-card { width: 100%; max-width: 340px; padding: 20px 24px; flex-direction: row; gap: 16px; align-items: center; }

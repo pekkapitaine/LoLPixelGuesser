@@ -28,18 +28,92 @@
   100% { transform: translateY(110vh) rotate(720deg); opacity: 0; }
 }
 
+@property --fire-angle {
+  syntax: '<angle>';
+  inherits: false;
+  initial-value: 0deg;
+}
+
 .trophy-card {
   position: relative;
-  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-  border: 2px solid var(--trophy-color, #f8d24b);
   border-radius: 24px;
   padding: 40px 50px;
   text-align: center;
-  box-shadow: 0 0 60px var(--trophy-color, #f8d24b), 0 0 120px rgba(0,0,0,0.8);
   animation: trophyPop 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
   max-width: 340px;
   width: 90vw;
   z-index: 1;
+
+  /* COMMON */
+  &.rarity-common {
+    background: linear-gradient(135deg, #1a1a2e, #16213e);
+    border: 2px solid var(--trophy-color, #f8d24b);
+    box-shadow: 0 0 40px color-mix(in srgb, var(--trophy-color) 40%, transparent);
+  }
+
+  /* RARE */
+  &.rarity-rare {
+    background: linear-gradient(135deg, #0d0d1a, #12121f);
+    border: none;
+    box-shadow:
+      0 0 40px color-mix(in srgb, var(--trophy-color) 50%, transparent),
+      0 0 80px color-mix(in srgb, var(--trophy-color) 20%, transparent);
+
+    &::before {
+      content: '';
+      position: absolute;
+      inset: -2px;
+      border-radius: 26px;
+      background: linear-gradient(var(--fire-angle), var(--trophy-color), transparent 40%, transparent 60%, var(--trophy-color));
+      animation: rare-spin 3s linear infinite;
+      z-index: -1;
+    }
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 2px;
+      border-radius: 22px;
+      background: linear-gradient(135deg, #0d0d1a, #12121f);
+      z-index: -1;
+    }
+  }
+
+  /* LEGENDARY */
+  &.rarity-legendary {
+    background: linear-gradient(135deg, #0a0005, #120008);
+    border: none;
+    box-shadow:
+      0 0 50px rgba(255,100,0,0.6),
+      0 0 100px rgba(255,50,0,0.3),
+      0 0 160px rgba(255,200,0,0.1);
+
+    &::before {
+      content: '';
+      position: absolute;
+      inset: -3px;
+      border-radius: 28px;
+      background: conic-gradient(
+        from var(--fire-angle),
+        #ff4500, #ff8c00, #ffd700, #ff8c00,
+        #ff4500, #ff0000, #ff4500, #ff8c00,
+        #ffd700, #ff4500
+      );
+      animation: legendary-fire 1.8s linear infinite;
+      z-index: -1;
+    }
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 3px;
+      border-radius: 21px;
+      background: linear-gradient(135deg, #0a0005, #120008);
+      z-index: -1;
+    }
+
+    .trophy-icon {
+      filter: drop-shadow(0 0 16px #ff8c00) drop-shadow(0 0 32px #ff4500) !important;
+    }
+  }
 }
 
 @keyframes trophyPop {
@@ -106,4 +180,12 @@
 @keyframes blink {
   0%, 100% { opacity: 1; }
   50%       { opacity: 0.3; }
+}
+
+@keyframes rare-spin {
+  to { --fire-angle: 360deg; }
+}
+
+@keyframes legendary-fire {
+  to { --fire-angle: 360deg; }
 }

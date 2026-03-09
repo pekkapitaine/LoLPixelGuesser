@@ -177,19 +177,144 @@
   gap: 10px;
 }
 
+@property --badge-angle {
+  syntax: '<angle>';
+  inherits: false;
+  initial-value: 0deg;
+}
+
 .badge {
+  position: relative;
   display: flex;
   align-items: center;
   gap: 8px;
   padding: 8px 14px;
-  background: rgba(255,255,255,0.06);
-  border: 1px solid var(--b-color);
   border-radius: 999px;
-  box-shadow: 0 0 8px color-mix(in srgb, var(--b-color) 30%, transparent);
 
-  .badge-icon { font-size: 1.2rem; }
-  .badge-title { font-size: 0.85rem; font-weight: bold; color: var(--b-color); }
+  .badge-icon { font-size: 1.2rem; position: relative; z-index: 1; }
+  .badge-title { font-size: 0.85rem; font-weight: bold; color: var(--b-color); position: relative; z-index: 1; }
+
+  &.rarity-common {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid var(--b-color);
+    box-shadow: 0 0 8px color-mix(in srgb, var(--b-color) 30%, transparent);
+  }
+
+  &.rarity-rare {
+    background: rgba(255,255,255,0.06);
+    border: none;
+    box-shadow: 0 0 12px color-mix(in srgb, var(--b-color) 40%, transparent);
+
+    &::before {
+      content: '';
+      position: absolute;
+      inset: -1.5px;
+      border-radius: 999px;
+      background: linear-gradient(var(--badge-angle), var(--b-color), transparent 40%, transparent 60%, var(--b-color));
+      animation: badge-spin 3s linear infinite;
+      z-index: 0;
+    }
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 1.5px;
+      border-radius: 999px;
+      background: #1a1a2e;
+      z-index: 0;
+    }
+  }
+
+  &.rarity-legendary {
+    background: rgba(5,0,0,0.6);
+    border: none;
+    box-shadow:
+      0 0 14px rgba(255,100,0,0.6),
+      0 0 28px rgba(255,50,0,0.2);
+
+    &::before {
+      content: '';
+      position: absolute;
+      inset: -2px;
+      border-radius: 999px;
+      background: conic-gradient(
+        from var(--badge-angle),
+        #ff4500, #ff8c00, #ffd700, #ff8c00, #ff4500, #ff0000, #ffd700, #ff4500
+      );
+      animation: badge-fire 2s linear infinite;
+      z-index: 0;
+    }
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 2px;
+      border-radius: 999px;
+      background: #0a0005;
+      z-index: 0;
+    }
+
+    .badge-icon {
+      filter: drop-shadow(0 0 6px #ff8c00);
+      animation: badge-icon-float 2s ease-in-out infinite;
+    }
+    .badge-title { color: #ffd700; }
+  }
 }
+
+@keyframes badge-spin {
+  to { --badge-angle: 360deg; }
+}
+
+@keyframes badge-fire {
+  to { --badge-angle: 360deg; }
+}
+
+@keyframes badge-icon-float {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-2px); }
+}
+
+.badge-tooltip {
+  position: absolute;
+  bottom: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%);
+  display: none;
+  background: #1a1a2e;
+  border: 1px solid var(--b-color);
+  border-radius: 10px;
+  padding: 8px 12px;
+  max-width: min(240px, calc(100vw - 24px));
+  white-space: normal;
+  z-index: 100;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.6);
+  pointer-events: none;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 6px solid transparent;
+    border-top-color: var(--b-color);
+  }
+
+  .tooltip-desc {
+    display: block;
+    font-size: 0.8rem;
+    color: #ccc;
+  }
+
+  .tooltip-date {
+    display: block;
+    font-size: 0.72rem;
+    color: rgba(255,255,255,0.4);
+    margin-top: 4px;
+  }
+}
+
+.badge:hover .badge-tooltip { display: block; }
+.badge:active .badge-tooltip { display: block; }
 
 .no-badges {
   color: #666;

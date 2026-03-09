@@ -4,11 +4,12 @@ import { PwaService } from './core/services/pwa.service';
 import { ProfileService } from './core/services/profile.service';
 import { InstallModalComponent } from './shared/components/install-modal/install-modal.component';
 import { TrophyUnlockComponent } from './shared/components/trophy-unlock/trophy-unlock.component';
+import { ChangelogComponent } from './shared/components/changelog/changelog.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, InstallModalComponent, TrophyUnlockComponent],
+  imports: [RouterOutlet, InstallModalComponent, TrophyUnlockComponent, ChangelogComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })

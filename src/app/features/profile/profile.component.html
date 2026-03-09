@@ -60,9 +60,21 @@
           <p class="no-badges">Aucun trophée pour l'instant... joue pour en débloquer !</p>
         }
         @for (trophy of trophyService.unlockedTrophies(); track trophy.id) {
-          <div class="badge" [style.--b-color]="trophy.color">
+          <div class="badge"
+            [class.rarity-common]="trophy.rarity === 'common'"
+            [class.rarity-rare]="trophy.rarity === 'rare'"
+            [class.rarity-legendary]="trophy.rarity === 'legendary'"
+            [style.--b-color]="trophy.color"
+          >
             <span class="badge-icon">{{ trophy.icon }}</span>
             <span class="badge-title">{{ trophy.title }}</span>
+                        <div class="badge-tooltip">
+              <span class="tooltip-desc">{{ trophy.description }}</span>
+              @if (trophy.unlockedAt) {
+                <span class="tooltip-date">📅 {{ trophy.unlockedAt }}</span>
+              }
+            </div>
+
           </div>
         }
       </div>

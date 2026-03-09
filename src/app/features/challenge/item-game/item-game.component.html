@@ -1,6 +1,5 @@
 <div class="container">
 
-  <!-- Top bar -->
   <header class="top-bar">
     <button class="back-btn" (click)="goBack()">
       <img src="assets/interface/back_arrow.svg" alt="Retour">
@@ -13,32 +12,18 @@
     </div>
   </header>
 
-  <!-- Zone principale -->
   <div class="game-area">
 
-    <!-- Panneau stats (desktop) -->
     <aside class="side-panel stats-panel">
       <div class="timer-block">
         <div class="timer-label">⏱️ Temps</div>
         <div class="timer-value">{{ formattedTime() }}</div>
       </div>
       <div class="stats-block">
-        <div class="stat-row">
-          <span class="stat-label">🔍 Tentatives :</span>
-          <span class="stat-value">{{ stats().attempts }}</span>
-        </div>
-        <div class="stat-row">
-          <span class="stat-label">✅ Bons :</span>
-          <span class="stat-value">{{ stats().correct }}</span>
-        </div>
-        <div class="stat-row">
-          <span class="stat-label">🔥 Série :</span>
-          <span class="stat-value">{{ stats().streak }}</span>
-        </div>
-        <div class="stat-row">
-          <span class="stat-label">📊 Ratio :</span>
-          <span class="stat-value">{{ ratio() }} / min</span>
-        </div>
+        <div class="stat-row"><span class="stat-label">🔍 Tentatives :</span><span class="stat-value">{{ stats().attempts }}</span></div>
+        <div class="stat-row"><span class="stat-label">✅ Bons :</span><span class="stat-value">{{ stats().correct }}</span></div>
+        <div class="stat-row"><span class="stat-label">🔥 Série :</span><span class="stat-value">{{ stats().streak }}</span></div>
+        <div class="stat-row"><span class="stat-label">📊 Ratio :</span><span class="stat-value">{{ ratio() }} / min</span></div>
       </div>
       <div class="arena-toggle">
         <input type="checkbox" id="include-arena" [(ngModel)]="includeArena">
@@ -46,19 +31,10 @@
       </div>
     </aside>
 
-    <!-- Image item -->
     <div class="image-container">
-      @if (isLoading()) {
-        <div class="loader-spinner"></div>
-      } @else {
-        <img [src]="imageSrc()" alt="Item pixelisé">
-      }
-      <div class="feedback" [class.visible]="feedback() !== 'none'" [class.correct]="feedback() === 'correct'" [class.wrong]="feedback() === 'wrong'">
-        {{ feedback() === 'correct' ? '✅ Correct !' : '❌ Faux !' }}
-      </div>
+      <app-pixel-image [src]="imageSrc()" [feedback]="feedback()" [isLoading]="isLoading()" />
     </div>
 
-    <!-- Panneau historique (desktop) -->
     <aside class="side-panel history-panel">
       <div class="history">
         <h3>Historique</h3>
@@ -74,41 +50,23 @@
 
   </div>
 
-  <!-- Contrôles bas -->
   <div class="bottom-controls">
     <div class="arena-option">
       <input type="checkbox" id="include-arena-mobile" [(ngModel)]="includeArena">
       <label for="include-arena-mobile">Inclure les items Arena</label>
     </div>
-    <div class="guess">
-      <input
-        #itemInput
-        type="text"
-        [value]="inputValue()"
-        (input)="onInputChange($any($event.target).value)"
-        (keydown)="onKeydown($event)"
-        placeholder="Tape le nom de l'item..."
-        autocomplete="off"
-      >
-      @if (suggestions().length > 0) {
-        <div class="suggestions">
-          @for (suggestion of suggestions(); track suggestion; let i = $index) {
-            <div
-              class="suggestion-item"
-              [class.focused]="i === focusedIndex()"
-              (click)="selectSuggestion(suggestion)"
-            >{{ suggestion }}</div>
-          }
-        </div>
-      }
-    </div>
+    <app-guess-input
+      [suggestions]="suggestions()"
+      placeholder="Tape le nom de l'item..."
+      (queryChange)="onQueryChange($event)"
+      (submit)="selectSuggestion($event)"
+    />
     <div class="bottom-actions">
       <button id="skip-btn" (click)="skip()">Passer</button>
       <button class="history-btn" (click)="toggleHistory()">📋 Historique</button>
     </div>
   </div>
 
-  <!-- Drawer historique (mobile) -->
   <div class="history-drawer" [class.open]="showHistory()">
     <div class="drawer-header">
       <h3>Historique</h3>

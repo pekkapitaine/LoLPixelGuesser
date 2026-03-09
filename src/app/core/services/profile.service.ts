@@ -28,7 +28,7 @@ export class ProfileService {
   }
 
   setPseudo(pseudo: string): void {
-    this._profile.update(p => ({ ...p, pseudo: pseudo.trim() || 'Invocateur' }));
+    this._profile.update(p => ({ ...p, pseudo: pseudo.trim() }));
     this.save();
   }
 

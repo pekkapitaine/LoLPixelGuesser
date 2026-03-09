@@ -1,0 +1,33 @@
+@if (pwa.showChangelog()) {
+  <div class="modal" (click).self="pwa.closeChangelog()">
+    <div class="changelog-content">
+      <div class="changelog-header">
+        <span class="changelog-title">📋 Notes de version</span>
+        <span class="close" (click)="pwa.closeChangelog()">✖</span>
+      </div>
+      <div class="changelog-body">
+
+        <!-- ══ Ajoute tes versions ici ══ -->
+
+        <div class="version-block">
+          <div class="version-tag">v2.0 — Mars 2026</div>
+          <ul>
+            <li>Page Profil (pseudo, avatar, thème)</li>
+            <li>Page Trophées avec 15 trophées et système de rareté</li>
+            <li>Mode Escalade : pixelisation croissante, une vie</li>
+          </ul>
+        </div>
+
+        <div class="version-block">
+          <div class="version-tag">v1.0 — 2025</div>
+          <ul>
+            <li>Mode Infini avec 4 difficultés</li>
+            <li>Inclusion de skins possible</li>
+            <li>Section Challenges</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </div>
+}

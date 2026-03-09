@@ -18,7 +18,7 @@ import { AVATARS } from '../../core/models/profile.model';
 export class HomeComponent implements OnInit {
   private router = inject(Router);
   private gameService = inject(GameService);
-  private pwa = inject(PwaService);
+  readonly pwa = inject(PwaService);
   readonly profileService = inject(ProfileService);
   readonly trophyService = inject(TrophyService);
   readonly avatars = AVATARS;

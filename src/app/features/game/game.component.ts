@@ -1,21 +1,22 @@
 import {
-  Component, OnInit, OnDestroy, inject, signal, computed, ElementRef, ViewChild
+  Component, OnInit, OnDestroy, inject, signal, computed, ViewChild
 } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { FormsModule } from '@angular/forms';
 import { GameService } from '../../core/services/game.service';
 import { ChampionService } from '../../core/services/champion.service';
 import { TimerService } from '../../core/services/timer.service';
 import { TrophyService } from '../../core/services/trophy.service';
 import { Difficulty, DIFFICULTY_LABELS } from '../../core/models/champion.model';
 import { HistoryEntry } from '../../core/models/game.model';
+import { PixelImageComponent } from '../../shared/components/pixel-image/pixel-image.component';
+import { GuessInputComponent } from '../../shared/components/guess-input/guess-input.component';
 
 type FeedbackState = 'correct' | 'wrong' | 'none';
 
 @Component({
   selector: 'app-game',
   standalone: true,
-  imports: [FormsModule],
+  imports: [PixelImageComponent, GuessInputComponent],
   templateUrl: './game.component.html',
   styleUrl: './game.component.scss',
 })
@@ -27,27 +28,25 @@ export class GameComponent implements OnInit, OnDestroy {
   private trophyService = inject(TrophyService);
   readonly timer = inject(TimerService);
 
-  // ---- State ----
   readonly difficulty = signal<Difficulty>('facile');
   readonly difficultyTitle = computed(() => DIFFICULTY_LABELS[this.difficulty()].label);
   readonly champImageSrc = signal<string>('');
   readonly feedback = signal<FeedbackState>('none');
-  readonly inputValue = signal('');
   readonly suggestions = signal<string[]>([]);
-  readonly focusedIndex = signal(0);
   readonly isLoading = signal(true);
   readonly history = this.gameService.history;
   readonly stats = this.timer.stats;
   readonly formattedTime = this.timer.formattedTime;
   readonly ratio = this.timer.ratio;
-
+  readonly lastGuessTotalSeconds = signal(0);
+  readonly timeToGuess = computed(() => this.timer.totalSeconds() - this.lastGuessTotalSeconds());
   readonly showHistory = signal(false);
 
   private currentChampion: string | null = null;
   private currentSoluce: string | null = null;
   private feedbackTimeout: ReturnType<typeof setTimeout> | null = null;
 
-  @ViewChild('champInput') champInputRef!: ElementRef<HTMLInputElement>;
+  @ViewChild(GuessInputComponent) guessInput!: GuessInputComponent;
 
   async ngOnInit(): Promise<void> {
     const diff = this.route.snapshot.paramMap.get('difficulty') as Difficulty;
@@ -70,68 +69,39 @@ export class GameComponent implements OnInit, OnDestroy {
     if (this.feedbackTimeout) clearTimeout(this.feedbackTimeout);
   }
 
-  // ---- Navigation ----
-  toggleHistory(): void {
-    this.showHistory.update(v => !v);
-  }
+  toggleHistory(): void { this.showHistory.update(v => !v); }
 
   goBack(): void {
     this.timer.stop();
     this.router.navigate(['/']);
   }
 
-  // ---- Game logic ----
   async loadNextChamp(): Promise<void> {
     this.isLoading.set(true);
     try {
       const entry = this.championService.getRandomImage(this.gameService.includeSkins());
       if (!entry) return;
-
       const imagePath = this.championService.getImagePath(entry);
       const pixelized = await this.championService.pixelizeImage(imagePath, this.difficulty());
-
       this.champImageSrc.set(pixelized);
       this.currentChampion = entry.champion;
       this.currentSoluce = imagePath;
+      this.lastGuessTotalSeconds.set(this.timer.totalSeconds());
     } catch (err) {
       console.error('Erreur chargement champion :', err);
     } finally {
       this.isLoading.set(false);
+      this.guessInput?.focus();
     }
   }
 
-  skip(): void {
-    this.loadNextChamp();
-  }
+  skip(): void { this.loadNextChamp(); }
 
-  // ---- Input / suggestions ----
-  onInputChange(value: string): void {
-    this.inputValue.set(value);
-    const filtered = this.championService.filterSuggestions(value);
-    this.suggestions.set(filtered);
-    this.focusedIndex.set(0);
-  }
-
-  onKeydown(event: KeyboardEvent): void {
-    const items = this.suggestions();
-    if (!items.length) return;
-
-    if (event.key === 'ArrowDown') {
-      event.preventDefault();
-      this.focusedIndex.update(i => (i + 1) % items.length);
-    } else if (event.key === 'ArrowUp') {
-      event.preventDefault();
-      this.focusedIndex.update(i => (i - 1 + items.length) % items.length);
-    } else if (event.key === 'Enter') {
-      event.preventDefault();
-      const selected = items[this.focusedIndex()];
-      if (selected) this.selectSuggestion(selected);
-    }
+  onQueryChange(value: string): void {
+    this.suggestions.set(this.championService.filterSuggestions(value));
   }
 
   selectSuggestion(champion: string): void {
-    this.inputValue.set('');
-    this.suggestions.set([]);
     this.submitGuess(champion);
   }
 
@@ -144,11 +114,12 @@ export class GameComponent implements OnInit, OnDestroy {
     const correct = this.championService.normalizeStr(this.currentChampion);
 
     if (normalized === correct) {
+      this.trophyService.checkfastGuess(this.timeToGuess());
       this.timer.incrementCorrect();
       this.gameService.addHistory({ champion: this.currentChampion, correct: true });
-      this.trophyService.checkCorrectCount(this.timer.stats().correct);
+      this.trophyService.addCorrect();
       this.trophyService.checkStreak(this.timer.stats().streak);
-      this.showFeedback('correct');
+      this.feedback.set('correct');
       if (this.currentSoluce) this.champImageSrc.set(this.currentSoluce);
       this.feedbackTimeout = setTimeout(() => {
         this.feedback.set('none');
@@ -157,15 +128,10 @@ export class GameComponent implements OnInit, OnDestroy {
     } else {
       this.timer.resetStreak();
       this.gameService.addHistory({ champion: guess, correct: false });
-      this.showFeedback('wrong');
+      this.feedback.set('wrong');
       this.feedbackTimeout = setTimeout(() => {
         this.feedback.set('none');
       }, 2000);
     }
-  }
-
-  private showFeedback(state: FeedbackState): void {
-    if (this.feedbackTimeout) clearTimeout(this.feedbackTimeout);
-    this.feedback.set(state);
   }
 }

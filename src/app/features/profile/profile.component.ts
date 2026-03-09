@@ -22,7 +22,10 @@ export class ProfileComponent {
 
   get profile() { return this.profileService.profile(); }
   get pseudo() { return this.profile.pseudo; }
-  set pseudo(v: string) { this.profileService.setPseudo(v); }
+  set pseudo(v: string) { 
+    this.profileService.setPseudo(v);
+      if (v.toLowerCase() === 'groot') this.trophyService.unlock('groot');
+   }
 
   selectAvatar(i: number): void {
     this.profileService.setAvatar(i);

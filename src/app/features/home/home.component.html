@@ -1,5 +1,8 @@
 <div class="container" id="welcome-screen">
 
+  <!-- Bouton changelog top-right -->
+  <button class="changelog-btn" (click)="pwa.openChangelog()" title="Notes de version">📋</button>
+
   <!-- Icons top-left -->
   <div class="top-icons">
     <a routerLink="/profile" class="top-icon" title="Profil">
@@ -33,9 +36,9 @@
       </div>
     </div>
 
-    <!-- MODE DÉFI -->
+    <!-- Challenges -->
     <div class="mode-section">
-      <h2>⚡ Mode Défi</h2>
+      <h2>⚡ Challenges</h2>
       <p>Le divertissement à son prime</p>
       <a routerLink="/challenge" class="challenge-btn">Jouer</a>
     </div>

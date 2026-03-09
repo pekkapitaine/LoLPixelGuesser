@@ -4,6 +4,9 @@ import { Trophy, TROPHIES } from '../models/trophy.model';
 @Injectable({ providedIn: 'root' })
 export class TrophyService {
   private readonly STORAGE_KEY = 'lpg_trophies';
+  private readonly CORRECT_KEY = 'lpg_total_correct';
+
+  private _totalCorrect = parseInt(localStorage.getItem(this.CORRECT_KEY) ?? '0', 10);
 
   private _trophies = signal<Trophy[]>(this.load());
   readonly trophies = this._trophies.asReadonly();
@@ -14,10 +17,22 @@ export class TrophyService {
   readonly unlockedCount = computed(() => this._trophies().filter(t => t.unlocked).length);
   readonly unlockedTrophies = computed(() => this._trophies().filter(t => t.unlocked));
 
+  private _unlockQueue: Trophy[] = [];
+
+  private showNext(): void {
+    if (this._pendingUnlock() !== null) return;
+    const next = this._unlockQueue.shift();
+    if (next) {
+      this._pendingUnlock.set(next);
+      
+    }
+
+  }
+
   private load(): Trophy[] {
     try {
       const saved = localStorage.getItem(this.STORAGE_KEY);
-      if (!saved) return TROPHIES.map(t => ({ ...t }));
+      if (!saved) return TROPHIES.map(t => ({ ...t, unlocked: false }));
       const savedMap: Record<string, any> = JSON.parse(saved);
       return TROPHIES.map(t => ({
         ...t,
@@ -25,7 +40,7 @@ export class TrophyService {
         unlockedAt: savedMap[t.id + '_at'] ?? undefined,
       }));
     } catch {
-      return TROPHIES.map(t => ({ ...t }));
+      return TROPHIES.map(t => ({ ...t, unlocked: false }));
     }
   }
 
@@ -50,24 +65,36 @@ export class TrophyService {
     this.save();
 
     const unlockedTrophy = updated.find(t => t.id === id)!;
-    this._pendingUnlock.set(unlockedTrophy);
+    this._unlockQueue.push(unlockedTrophy);
+    this.showNext();
   }
 
   clearPendingUnlock(): void {
     this._pendingUnlock.set(null);
+    this.showNext();
   }
 
-  checkCorrectCount(total: number): void {
-    if (total >= 1)   this.unlock('first_correct');
-    if (total >= 10)  this.unlock('correct_10');
-    if (total >= 50)  this.unlock('correct_50');
-    if (total >= 100) this.unlock('correct_100');
-    if (total >= 500) this.unlock('correct_500');
+  addCorrect(): void {
+    this._totalCorrect++;
+    localStorage.setItem(this.CORRECT_KEY, String(this._totalCorrect));
+    const n = this._totalCorrect;
+    if (n >= 1)   this.unlock('first_correct');
+    if (n >= 10)  this.unlock('correct_10');
+    if (n >= 50)  this.unlock('correct_50');
+    if (n >= 100) this.unlock('correct_100');
+    if (n >= 500) this.unlock('correct_500');
   }
 
   checkStreak(streak: number): void {
     if (streak >= 5)  this.unlock('streak_5');
     if (streak >= 10) this.unlock('streak_10');
     if (streak >= 20) this.unlock('streak_20');
+  }
+
+  checkfastGuess(seconds: number): void {
+    if (seconds <= 1)  this.unlock('fast_1');
+    if (seconds <= 2)  this.unlock('fast_2');
+    if (seconds <= 3)  this.unlock('fast_3');
+    if (seconds <= 5)  this.unlock('fast_5');
   }
 }
