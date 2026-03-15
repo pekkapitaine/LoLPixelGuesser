@@ -39,6 +39,11 @@ export const TROPHIES: TrophyDef[] = [
   { id: 'fast_2',         title: 'Tempête',            description: 'Trouver un champion en moins de 2 secondes', icon: '🌪️', color: '#c026d3', isSecret: false, rarity: 'rare',      category: 'vitesse'     },
   { id: 'fast_1',         title: 'Éclair Suprême',     description: 'Trouver un champion en moins de 1 seconde',  icon: '🌩️', color: '#e879f9', isSecret: false, rarity: 'legendary', category: 'vitesse'     },
   { id: 'extreme_mode',   title: 'Masochiste',         description: 'Jouer en mode Extrême',                      icon: '😈', color: '#dc2626', isSecret: false, rarity: 'common',    category: 'modes'       },
-  { id: 'challenge_mode', title: 'Même pas peur',      description: 'Aller dans la section Challenges',                         icon: '⚔️', color: '#7c3aed', isSecret: false, rarity: 'common',    category: 'modes'       },
-  { id: 'groot',          title: 'Groot',              description: 'Je s\'appelle Groot',                        icon: '🪵', color: '#4e2e05', isSecret: false,  rarity: 'legendary', category: 'speciaux'   },
+  { id: 'challenge_mode', title: 'Même pas peur',      description: 'Aller dans la section Challenges',           icon: '⚔️', color: '#7c3aed', isSecret: false, rarity: 'common',    category: 'modes'       },
+  { id: 'groot',          title: 'Groot',              description: 'Je s\'appelle Groot',                        icon: '🪵', color: '#4e2e05', isSecret: false, rarity: 'legendary', category: 'speciaux'   },
+  { id: 'small_player',   title: 'Petit Joueur',       description: 'Le chrono atteint 1 minute',                    icon: '👶', color: '#64748b', isSecret: false, rarity: 'common',    category: 'speciaux'   },
+  { id: 'real_player',    title: 'Vrai Joueur',        description: 'Le chrono atteint 5 minutes',                   icon: '🧑', color: '#64748b', isSecret: false,  rarity: 'common',    category: 'speciaux'   },
+  { id: 'try_harder',     title: 'Essaie encore',      description: 'Le chrono atteint 10 minutes',                  icon: '👨‍🦳', color: '#64748b', isSecret: false,  rarity: 'rare',      category: 'speciaux'   },
+  { id: 'accro',          title: 'Accro',              description: 'Le chrono atteint 30 minutes',                  icon: '👴', color: '#64748b', isSecret: false,  rarity: 'rare',      category: 'speciaux'   },
+  { id: 'fall_asleep',    title: 'Dormeur',            description: 'Le chrono atteint 1 heure',       icon: '💤', color: '#64748b', isSecret: false,  rarity: 'rare',    category: 'speciaux'   }
 ];

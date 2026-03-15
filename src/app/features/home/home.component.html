@@ -19,8 +19,8 @@
 
   <div class="modes-container">
     <!-- MODE INFINI -->
-    <div class="mode-section">
-      <h2>♾️ Mode Infini</h2>
+    <div class="mode-section champions-section">
+      <h2>🦸 Champions</h2>
       <div class="card-container">
         @for (diff of difficulties; track diff) {
           <div class="difficulty-card {{ diff }}" (click)="selectDifficulty(diff)">
@@ -30,21 +30,37 @@
           </div> 
         }
       </div>
-      <div class="skin-option">
+      <div class="game-option">
         <input type="checkbox" id="include-skins" [(ngModel)]="includeSkins">
-        <label for="include-skins">Inclure les skins</label>
+        <label for="include-skins">Skins</label>
+      </div>
+    </div>
+    
+    <!-- items -->
+    <div class="mode-section items-section">
+      <a routerLink="/infinite/item">
+        <h2>🗡️ Items</h2>
+        <h3>Deviner l'item</h3>
+      </a>
+      <div class="game-option" (click)="$event.stopPropagation()">
+        <input type="checkbox" id="include-arena" [(ngModel)]="includeArena">
+        <label for="include-arena">Arena</label>
       </div>
     </div>
 
     <!-- Challenges -->
-    <div class="mode-section">
-      <h2>⚡ Challenges</h2>
-      <p>Le divertissement à son prime</p>
-      <a routerLink="/challenge" class="challenge-btn">Jouer</a>
+    <div class="mode-section challenges-section">
+      <a routerLink="/challenge">
+        <div class="challenges-inner">
+          <span class="challenges-icon">⚡</span>
+          <span class="challenges-label">Challenges</span>
+          <span class="challenges-sub">Modes spéciaux</span>
+        </div>
+      </a>
     </div>
   </div>
 
   <footer>
-    <p>© 2025 LPG LolPixelGuesser. Tous droits réservés. Pekkapitaine corp.</p>
+    <p>© 2026 LPG LolPixelGuesser. Tous droits réservés. Pekkapitaine corp.</p>
   </footer>
 </div>

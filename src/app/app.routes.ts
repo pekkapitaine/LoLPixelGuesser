@@ -6,8 +6,12 @@ export const routes: Routes = [
     loadComponent: () => import('./features/home/home.component').then(m => m.HomeComponent),
   },
   {
-    path: 'game/:difficulty',
+    path: 'infinite/champion/:difficulty',
     loadComponent: () => import('./features/game/game.component').then(m => m.GameComponent),
+  },
+    {
+    path: 'infinite/item',
+    loadComponent: () => import('./features/challenge/item-game/item-game.component').then(m => m.ItemGameComponent),
   },
   {
     path: 'escalade',
@@ -16,10 +20,6 @@ export const routes: Routes = [
   {
     path: 'challenge',
     loadComponent: () => import('./features/challenge/challenge.component').then(m => m.ChallengeComponent),
-  },
-  {
-    path: 'challenge/item',
-    loadComponent: () => import('./features/challenge/item-game/item-game.component').then(m => m.ItemGameComponent),
   },
   {
     path: 'profile',

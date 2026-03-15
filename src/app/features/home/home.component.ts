@@ -25,23 +25,21 @@ export class HomeComponent implements OnInit {
 
   get profile() { return this.profileService.profile(); }
 
-  ngOnInit(): void {
-    setTimeout(() => this.pwa.checkAndShowInstallModal(), 1000);
-  }
-
   readonly difficulties: Difficulty[] = ['facile', 'moyen', 'difficile', 'extreme'];
   readonly labels = DIFFICULTY_LABELS;
 
-  get includeSkins(): boolean {
-    return this.gameService.includeSkins();
-  }
+  get includeSkins(): boolean { return this.gameService.includeSkins(); }
+  set includeSkins(value: boolean) { this.gameService.setIncludeSkins(value); }
 
-  set includeSkins(value: boolean) {
-    this.gameService.setIncludeSkins(value);
-  }
+  get includeArena(): boolean { return this.gameService.includeArena(); }
+  set includeArena(value: boolean) { this.gameService.setIncludeArena(value); }
 
   selectDifficulty(difficulty: Difficulty): void {
     this.gameService.setDifficulty(difficulty);
-    this.router.navigate(['/game', difficulty]);
+    this.router.navigate(['/infinite/champion', difficulty]);
+  }
+
+  ngOnInit(): void {
+    setTimeout(() => this.pwa.checkAndShowInstallModal(), 1000);
   }
 }

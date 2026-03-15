@@ -14,7 +14,7 @@
   display: flex;
   flex-direction: column;
   flex: 1;
-  background: var(--theme-bg, #1e1e2f);
+  background: transparent;
   min-height: 100vh;
   color: #fff;
 }
@@ -31,12 +31,12 @@
     margin: 0;
     flex: 1;
     font-size: 1.5rem;
-    color: var(--theme-primary, #f8d24b);
+    color:  #f8d24b;
   }
 }
 
 .back-btn {
-  color: var(--theme-primary, #f8d24b);
+  color: #f8d24b;
   text-decoration: none;
   font-weight: bold;
   font-size: 0.95rem;
@@ -46,7 +46,7 @@
 .progress {
   font-size: 1rem;
   font-weight: bold;
-  color: var(--theme-primary, #f8d24b);
+  color:  #f8d24b;
   background: rgba(255,255,255,0.08);
   padding: 4px 14px;
   border-radius: 999px;
@@ -59,9 +59,9 @@
 
 .progress-bar-fill {
   height: 100%;
-  background: var(--theme-primary, #f8d24b);
+  background:  #f8d24b;
   transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 0 0 8px var(--theme-primary, #f8d24b);
+  box-shadow: 0 0 8px  #f8d24b;
 }
 
 .trophy-section {

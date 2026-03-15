@@ -1,7 +1,7 @@
 <div class="container">
 
   <header class="top-bar">
-    <button class="back-btn" (click)="goBack()">← Retour</button>
+    <app-back-btn route="challenge/" />
     <h2 class="mode-title">
       📈 Escalade
       @if (!gameOver()) { — Champion #{{ round() }} }

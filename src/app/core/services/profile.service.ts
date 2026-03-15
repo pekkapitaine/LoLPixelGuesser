@@ -1,5 +1,5 @@
-import { Injectable, signal, effect } from '@angular/core';
-import { Profile, DEFAULT_PROFILE, THEMES, Theme } from '../models/profile.model';
+import { Injectable, signal } from '@angular/core';
+import { Profile, DEFAULT_PROFILE } from '../models/profile.model';
 
 @Injectable({ providedIn: 'root' })
 export class ProfileService {
@@ -8,11 +8,7 @@ export class ProfileService {
   private _profile = signal<Profile>(this.load());
   readonly profile = this._profile.asReadonly();
 
-  constructor() {
-    effect(() => {
-      this.applyTheme(this._profile().theme);
-    });
-  }
+  constructor() {}
 
   private load(): Profile {
     try {
@@ -35,18 +31,5 @@ export class ProfileService {
   setAvatar(index: number): void {
     this._profile.update(p => ({ ...p, avatarIndex: index }));
     this.save();
-  }
-
-  setTheme(theme: Theme): void {
-    this._profile.update(p => ({ ...p, theme }));
-    this.save();
-  }
-
-  private applyTheme(theme: Theme): void {
-    const t = THEMES.find(t => t.id === theme) ?? THEMES[0];
-    const root = document.documentElement;
-    root.style.setProperty('--theme-primary', t.primary);
-    root.style.setProperty('--theme-bg', t.bg);
-    root.style.setProperty('--theme-accent', t.accent);
   }
 }

@@ -110,7 +110,7 @@ footer {
 }
 
 /* Conteneur switch pour skins */
-.skin-option {
+.game-option {
   display: flex;
   align-items: center;
   gap: 10px;
@@ -122,12 +122,12 @@ footer {
 
 }
 
-.skin-option:hover {
+.game-option:hover {
     cursor : url(./assets/cursors/cursor_red.png), auto;
 }
 
 /* Hide default checkbox */
-.skin-option input[type="checkbox"] {
+.game-option input[type="checkbox"] {
   appearance: none;
   -webkit-appearance: none;
   width: 50px;
@@ -140,7 +140,7 @@ footer {
 }
 
 /* Circle inside the switch */
-.skin-option input[type="checkbox"]::after {
+.game-option input[type="checkbox"]::after {
   content: "";
   width: 20px;
   height: 20px;
@@ -153,16 +153,16 @@ footer {
 }
 
 /* Checked state */
-.skin-option input[type="checkbox"]:checked {
+.game-option input[type="checkbox"]:checked {
   background: #444;
 }
 
-.skin-option input[type="checkbox"]:checked::after {
+.game-option input[type="checkbox"]:checked::after {
   transform: translateX(26px);
 }
 
 /* Label text */
-.skin-option label {
+.game-option label {
   cursor: pointer;
 }
 

@@ -1,4 +1,4 @@
-import { Injectable, signal } from '@angular/core';
+import { Injectable } from '@angular/core';
 
 export interface ItemImage {
   file: string;
@@ -11,16 +11,7 @@ const ITEM_PIXEL_SIZE = 10;
 @Injectable({ providedIn: 'root' })
 export class ItemService {
   private data: ItemImage[] = [];
-  private _includeArena = signal<boolean>(
-    JSON.parse(localStorage.getItem('item_includeArena') ?? 'false')
-  );
 
-  readonly includeArena = this._includeArena.asReadonly();
-
-  setIncludeArena(value: boolean): void {
-    this._includeArena.set(value);
-    localStorage.setItem('item_includeArena', JSON.stringify(value));
-  }
 
   async loadData(): Promise<void> {
     if (this.data.length) return;

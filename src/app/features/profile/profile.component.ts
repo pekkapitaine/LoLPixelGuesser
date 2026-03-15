@@ -1,37 +1,49 @@
 import { Component, inject } from '@angular/core';
-import { RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { ProfileService } from '../../core/services/profile.service';
 import { TrophyService } from '../../core/services/trophy.service';
-import { THEMES, AVATARS } from '../../core/models/profile.model';
-import { Theme } from '../../core/models/profile.model';
+import { BackgroundService, BG_DEFS, BgType } from '../../core/services/background.service';
+import { AVATARS } from '../../core/models/profile.model';
+import { BackBtnComponent } from '../../shared/components/back-btn/back-btn.component';
 
 @Component({
   selector: 'app-profile',
   standalone: true,
-  imports: [RouterLink, FormsModule],
+  imports: [FormsModule, BackBtnComponent],
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.scss',
 })
 export class ProfileComponent {
   readonly profileService = inject(ProfileService);
   readonly trophyService = inject(TrophyService);
+  readonly bgService = inject(BackgroundService);
 
-  readonly themes = THEMES;
   readonly avatars = AVATARS;
+  readonly bgDefs = Object.values(BG_DEFS);
 
   get profile() { return this.profileService.profile(); }
   get pseudo() { return this.profile.pseudo; }
-  set pseudo(v: string) { 
+  set pseudo(v: string) {
     this.profileService.setPseudo(v);
-      if (v.toLowerCase() === 'groot') this.trophyService.unlock('groot');
-   }
+    if (v.toLowerCase() === 'groot') this.trophyService.unlock('groot');
+  }
 
   selectAvatar(i: number): void {
     this.profileService.setAvatar(i);
   }
 
-  selectTheme(id: Theme): void {
-    this.profileService.setTheme(id);
+  selectBg(id: BgType): void {
+    this.bgService.select(id);
   }
+
+  isBgUnlocked(id: BgType): boolean {
+    return this.bgService.unlocked().includes(id);
+  }
+
+  checkFlip(event: MouseEvent): void {
+    const el = event.currentTarget as HTMLElement;
+    const rect = el.getBoundingClientRect();
+    el.classList.toggle('tooltip-flip', rect.right + 160 > window.innerWidth);
+  }
+
 }

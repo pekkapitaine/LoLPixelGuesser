@@ -41,7 +41,7 @@
 .changelog-title {
   font-size: 1rem;
   font-weight: bold;
-  color: var(--theme-primary, #f8d24b);
+  color: #f8d24b;
 }
 
 .close {
@@ -62,14 +62,14 @@
 }
 
 .version-block {
-  border-left: 3px solid var(--theme-primary, #f8d24b);
+  border-left: 3px solid  #f8d24b;
   padding-left: 14px;
 }
 
 .version-tag {
   font-size: 0.85rem;
   font-weight: bold;
-  color: var(--theme-primary, #f8d24b);
+  color: #f8d24b;
   margin-bottom: 8px;
 }
 

@@ -6,6 +6,7 @@ import { HistoryEntry } from '../models/game.model';
 export class GameService {
   readonly difficulty = signal<Difficulty>('facile');
   readonly includeSkins = signal<boolean>(this.loadIncludeSkins());
+  readonly includeArena = signal<boolean>(this.loadIncludeArena());
   readonly history = signal<HistoryEntry[]>([]);
 
   setDifficulty(d: Difficulty): void {
@@ -15,6 +16,11 @@ export class GameService {
   setIncludeSkins(value: boolean): void {
     this.includeSkins.set(value);
     localStorage.setItem('includeSkins', String(value));
+  }
+
+  setIncludeArena(value: boolean): void {
+    this.includeArena.set(value);
+    localStorage.setItem('item_includeArena', JSON.stringify(value));
   }
 
   addHistory(entry: HistoryEntry): void {
@@ -28,5 +34,10 @@ export class GameService {
   private loadIncludeSkins(): boolean {
     const saved = localStorage.getItem('includeSkins');
     return saved !== null ? saved === 'true' : false;
+  }
+
+  private loadIncludeArena(): boolean {
+    const saved = localStorage.getItem('item_includeArena');
+    return saved !== null ? JSON.parse(saved) : false;
   }
 }

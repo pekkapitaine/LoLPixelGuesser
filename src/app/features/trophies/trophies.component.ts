@@ -1,12 +1,12 @@
 import { Component, inject, computed } from '@angular/core';
-import { RouterLink } from '@angular/router';
 import { TrophyService } from '../../core/services/trophy.service';
 import { TrophyCategory, TROPHY_CATEGORY_LABELS } from '../../core/models/trophy.model';
+import { BackBtnComponent } from '../../shared/components/back-btn/back-btn.component';
 
 @Component({
   selector: 'app-trophies',
   standalone: true,
-  imports: [RouterLink],
+  imports: [BackBtnComponent],
   templateUrl: './trophies.component.html',
   styleUrl: './trophies.component.scss',
 })

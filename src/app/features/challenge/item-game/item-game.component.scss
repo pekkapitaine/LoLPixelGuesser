@@ -4,7 +4,7 @@
   flex: 1;
   display: flex;
   flex-direction: column;
-  background: radial-gradient(circle at center, #101820, #05060a);
+  background: transparent;
   color: #fff;
   height: 100dvh;
   overflow: hidden;
@@ -60,20 +60,6 @@
   background: rgba(0, 0, 0, 0.55);
   backdrop-filter: blur(10px);
   border-top: 1px solid #f8d24b22;
-}
-
-.arena-option {
-  display: flex; align-items: center; gap: 8px; margin-bottom: 8px;
-  font-size: 0.85rem; color: #f8d24b; font-weight: bold;
-  input[type='checkbox'] {
-    appearance: none; -webkit-appearance: none;
-    width: 36px; height: 18px; background: #222; border-radius: 9px;
-    position: relative; cursor: pointer; transition: background 0.3s ease; flex-shrink: 0;
-    &::after { content: ''; width: 14px; height: 14px; background: #f8d24b; border-radius: 50%; position: absolute; top: 2px; left: 2px; transition: all 0.3s ease; }
-    &:checked { background: #444; }
-    &:checked::after { transform: translateX(18px); }
-  }
-  label { cursor: pointer; }
 }
 
 .bottom-actions { display: flex; gap: 10px; margin-top: 10px; }
@@ -135,20 +121,6 @@
   .stats-block { width: 100%; display: flex; flex-direction: column; gap: 12px; }
   .stat-row { display: flex; justify-content: space-between; font-size: 1rem; }
   .stat-value { font-weight: bold; }
-  .arena-toggle {
-    display: flex; align-items: center; gap: 8px; margin-top: 16px; padding-top: 16px;
-    border-top: 1px solid #f8d24b22; font-size: 0.9rem; font-weight: bold; color: #f8d24b;
-    width: 100%; justify-content: center;
-    input[type='checkbox'] {
-      appearance: none; -webkit-appearance: none;
-      width: 36px; height: 18px; background: #222; border-radius: 9px;
-      position: relative; cursor: pointer; transition: background 0.3s ease; flex-shrink: 0;
-      &::after { content: ''; width: 14px; height: 14px; background: #f8d24b; border-radius: 50%; position: absolute; top: 2px; left: 2px; transition: all 0.3s ease; }
-      &:checked { background: #444; }
-      &:checked::after { transform: translateX(18px); }
-    }
-    label { cursor: pointer; }
-  }
   .history-panel .history {
     width: 100%; background: rgba(20,20,30,0.8); border: 1px solid #f8d24b33;
     border-radius: 10px; padding: 10px; max-height: 300px; overflow-y: auto; box-shadow: 0 0 10px #f8d24b22;
@@ -159,7 +131,6 @@
   }
   .image-container { min-width: 300px; min-height: 300px; border: 2px solid #f8d24b33; border-radius: 20px; background: rgba(20,20,30,0.7); box-shadow: 0 0 20px #f8d24b22; flex: none; }
   .bottom-controls { background: transparent; backdrop-filter: none; border: none; padding: 0; width: 100%; max-width: 400px; margin: 0 auto 20px; }
-  .arena-option { display: none; }
   .bottom-actions { justify-content: center; }
   .history-btn { display: none; }
   .history-drawer, .drawer-backdrop { display: none; }

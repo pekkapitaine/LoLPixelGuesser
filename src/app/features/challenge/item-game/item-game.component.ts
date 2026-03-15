@@ -1,26 +1,27 @@
 import {
   Component, OnInit, OnDestroy, inject, signal, ViewChild
 } from '@angular/core';
-import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { ItemService, ItemImage } from '../../../core/services/item.service';
 import { TimerService } from '../../../core/services/timer.service';
 import { PixelImageComponent } from '../../../shared/components/pixel-image/pixel-image.component';
 import { GuessInputComponent } from '../../../shared/components/guess-input/guess-input.component';
+import { GameService } from '../../../core/services/game.service';
+import { BackBtnComponent } from '../../../shared/components/back-btn/back-btn.component';
 
 type FeedbackState = 'correct' | 'wrong' | 'none';
 
 @Component({
   selector: 'app-item-game',
   standalone: true,
-  imports: [FormsModule, PixelImageComponent, GuessInputComponent],
+  imports: [FormsModule, PixelImageComponent, GuessInputComponent, BackBtnComponent],
   templateUrl: './item-game.component.html',
   styleUrl: './item-game.component.scss',
 })
 export class ItemGameComponent implements OnInit, OnDestroy {
-  private router = inject(Router);
   readonly itemService = inject(ItemService);
   readonly timer = inject(TimerService);
+  readonly gameService = inject(GameService);
 
   readonly imageSrc = signal<string>('');
   readonly feedback = signal<FeedbackState>('none');
@@ -31,9 +32,6 @@ export class ItemGameComponent implements OnInit, OnDestroy {
   readonly stats = this.timer.stats;
   readonly formattedTime = this.timer.formattedTime;
   readonly ratio = this.timer.ratio;
-
-  get includeArena(): boolean { return this.itemService.includeArena(); }
-  set includeArena(value: boolean) { this.itemService.setIncludeArena(value); }
 
   private currentItem: ItemImage | null = null;
   private feedbackTimeout: ReturnType<typeof setTimeout> | null = null;
@@ -51,13 +49,12 @@ export class ItemGameComponent implements OnInit, OnDestroy {
     if (this.feedbackTimeout) clearTimeout(this.feedbackTimeout);
   }
 
-  goBack(): void { this.timer.stop(); this.router.navigate(['/challenge']); }
   toggleHistory(): void { this.showHistory.update(v => !v); }
 
   async loadNextItem(): Promise<void> {
     this.isLoading.set(true);
     try {
-      const item = this.itemService.getRandomItem(this.includeArena);
+      const item = this.itemService.getRandomItem(this.gameService.includeArena());
       if (!item) return;
       const path = this.itemService.getImagePath(item);
       const pixelized = await this.itemService.pixelizeImage(path);
@@ -77,7 +74,7 @@ export class ItemGameComponent implements OnInit, OnDestroy {
   }
 
   onQueryChange(value: string): void {
-    this.suggestions.set(this.itemService.filterSuggestions(value, this.includeArena));
+    this.suggestions.set(this.itemService.filterSuggestions(value, this.gameService.includeArena()));
   }
 
   selectSuggestion(name: string): void {

@@ -12,7 +12,7 @@
   text-align: center;
   gap: 40px;
   width: 100%;
-  background: radial-gradient(circle at center, #101820, #05060a);
+  background: transparent;
   color: #fff;
   flex: 1;
   min-height: calc(100vh - 60px);
@@ -23,7 +23,7 @@
   position: absolute;
   top: 16px;
   right: 16px;
-  z-index: 10;
+  z-index: 11;
   background: rgba(255,255,255,0.07);
   border: 1px solid rgba(255,255,255,0.12);
   border-radius: 999px;
@@ -31,12 +31,13 @@
   font-size: 1.2rem;
   padding: 7px 12px;
   cursor: pointer;
+  touch-action: manipulation;
   backdrop-filter: blur(8px);
   transition: background 0.2s, border-color 0.2s;
   font-family: inherit;
   &:hover {
     background: rgba(255,255,255,0.14);
-    border-color: var(--theme-primary, #f8d24b);
+    border-color: #f8d24b;
   }
 }
 
@@ -48,6 +49,7 @@
   flex-direction: column;
   gap: 10px;
   z-index: 10;
+  max-width: calc(100% - 80px);
 }
 
 .top-icon {
@@ -62,14 +64,22 @@
   color: #fff;
   backdrop-filter: blur(8px);
   transition: background 0.2s, border-color 0.2s;
+  touch-action: manipulation;
 
   &:hover {
     background: rgba(255,255,255,0.14);
-    border-color: var(--theme-primary, #f8d24b);
+    border-color: #f8d24b;
   }
 
-  .top-icon-emoji { font-size: 1.2rem; }
-  .top-icon-label { font-size: 0.78rem; font-weight: bold; color: var(--theme-primary, #f8d24b); }
+  .top-icon-emoji { font-size: 1.2rem; flex-shrink: 0; }
+  .top-icon-label {
+    font-size: 0.78rem;
+    font-weight: bold;
+    color:  #cccccc;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 }
 
 .game-logo {
@@ -77,8 +87,8 @@
   height: 20vh;
   margin-top: 30px;
   filter: drop-shadow(0 0 20px #f8d24b80);
-  image-rendering: crisp-edges;
-  image-rendering: pixelated;
+  position: relative;
+  z-index: 1;
 }
 
 .modes-container {
@@ -87,12 +97,14 @@
   align-items: flex-start;
   flex-wrap: wrap;
   gap: 50px;
+  position: relative;
+  z-index: 1;
   width: 100%;
   max-width: 1400px;
 }
 
 .mode-section {
-  background: rgba(20, 20, 30, 0.9);
+  background: rgba(20, 20, 30, 1);
   border: 2px solid #f8d24b33;
   border-radius: 20px;
   padding: 25px 35px;
@@ -104,6 +116,103 @@
     margin: 0;
     font-size: xx-large;
   }
+
+  h3 {
+    color: rgba(255,255,255,0.7);
+    margin: 6px 0 10px;
+    font-size: 1rem;
+  }
+
+  p {
+    color: rgba(255,255,255,0.5);
+    margin: 0;
+    font-size: 0.9rem;
+  }
+
+  /* Sections entièrement cliquables (items, challenges) */
+  > a {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.2s, box-shadow 0.2s;
+    touch-action: manipulation;
+
+    &:hover {
+      h2 { color: #ffe066; }
+    }
+  }
+
+  &:has(> a):hover {
+    transform: scale(1.02);
+    box-shadow: 0 0 30px #f8d24b55;
+    cursor: var(--cursor-red), pointer;
+  }
+}
+
+.champions-section {
+  background: linear-gradient(135deg, #0a1e35 0%, #0d2a42 60%, #141820 100%);
+  border-color: #1a6090;
+  box-shadow: 0 0 24px #0a3a5a;
+
+  &:hover { box-shadow: 0 0 32px #1a6090; }
+}
+
+.items-section {
+  background: linear-gradient(135deg, #0a2a1e 0%, #0d3828 60%, #141820 100%);
+  border-color: #1a7050;
+  box-shadow: 0 0 24px #0a3a28;
+
+  &:hover { box-shadow: 0 0 32px #1a7050; }
+}
+
+.challenges-section {
+  background: linear-gradient(135deg, #1a0a2e 0%, #2a1040 50%, #3a1a10 100%);
+  border-color: #6a2aaa;
+  box-shadow: 0 0 30px #2a0a4a;
+  padding: 0;
+  overflow: hidden;
+
+  > a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 32px 35px;
+    min-height: 120px;
+  }
+
+  &:hover {
+    box-shadow: 0 0 40px rgba(138,43,226,0.6);
+  }
+}
+
+.challenges-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.challenges-icon {
+  font-size: 2.8rem;
+  filter: drop-shadow(0 0 12px #f8d24b);
+  animation: pulse-icon 2s ease-in-out infinite;
+}
+
+.challenges-label {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #fff;
+  text-shadow: 0 0 12px rgba(138,43,226,0.8);
+}
+
+.challenges-sub {
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.65);
+}
+
+@keyframes pulse-icon {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.15); }
 }
 
 .card-container {
@@ -118,13 +227,12 @@
   padding: 20px 10px;
   cursor: pointer;
   transition: all 0.3s ease;
-  border: 1px solid #555;
-  backdrop-filter: blur(2px);
+  border: 1px solid #555; 
 
-  &.facile   { background: linear-gradient(45deg, rgba(0,188,255,.55) 0%, rgba(0,188,255,.35) 25%, rgba(0,188,255,.15) 50%, #111 100%); }
-  &.moyen    { background: linear-gradient(45deg, rgba(0,238,2,.55) 0%, rgba(0,238,2,.35) 25%, rgba(0,238,2,.15) 50%, #111 100%); }
-  &.difficile{ background: linear-gradient(45deg, rgba(255,221,0,.55) 0%, rgba(255,221,0,.35) 25%, rgba(255,221,0,.15) 50%, #111 100%); }
-  &.extreme  { background: linear-gradient(45deg, rgba(255,26,10,.55) 0%, rgba(255,26,10,.35) 25%, rgba(255,26,10,.15) 50%, #111 100%); }
+  &.facile   { background: linear-gradient(45deg, rgb(0, 141, 192) 0%, rgb(0, 97, 133) 25%, rgb(0, 47, 65) 50%, #111 100%); }
+  &.moyen    { background: linear-gradient(45deg, rgb(0, 207, 3) 0%, rgb(0, 151, 3) 25%, rgb(0, 56, 1) 50%, #111 100%); }
+  &.difficile{ background: linear-gradient(45deg, rgb(212, 184, 0) 0%,rgb(122, 106, 0) 25%, rgb(78, 68, 0) 50%, #111 100%); }
+  &.extreme  { background: linear-gradient(45deg, rgb(218, 15, 0) 0%, rgb(161, 11, 0) 25%, rgb(71, 5, 0) 50%, #111 100%); }
 
   &:hover {
     transform: scale(1.05);
@@ -145,7 +253,7 @@
   margin-bottom: 5px;
 }
 
-.skin-option {
+.game-option {
   display: flex;
   align-items: center;
   gap: 10px;
@@ -185,34 +293,16 @@
   label { cursor: pointer; }
 }
 
-.challenge-btn {
-  display: inline-block;
-  background: #f8d24b;
-  color: #111;
-  font-weight: bold;
-  border: none;
-  border-radius: 10px;
-  padding: 12px 30px;
-  cursor: pointer;
-  transition: transform 0.2s ease, background 0.3s ease;
-  margin-top: 20px;
-  text-decoration: none;
-
-  &:hover {
-    background: #ffd85c;
-    transform: scale(1.05);
-    cursor: var(--cursor-red), auto;
-  }
-}
-
 footer {
   margin-top: auto;
   width: 100%;
+  position: relative;
+  z-index: 1;
   background-color: #111;
-  color: white;
+  color: rgb(204, 204, 204);
   text-align: center;
   padding-block: clamp(6px, 1vh, 12px);
-  font-size: clamp(12px, 1.2vh, 16px);
+  font-size: clamp(8px, 1vh, 14px);
 }
 
 @media (max-width: 768px) {
@@ -259,13 +349,9 @@ footer {
 
   .smiley { width: 28px; height: 28px; margin-bottom: 3px; }
 
-  .skin-option {
+  .game-option {
     margin-top: 12px;
     font-size: 1rem;
   }
 
-  .challenge-btn {
-    padding: 10px 24px;
-    margin-top: 12px;
-  }
 }

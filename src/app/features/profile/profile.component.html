@@ -1,6 +1,6 @@
 <div class="profile-page">
   <div class="page-header">
-    <a routerLink="/" class="back-btn">← Retour</a>
+    <app-back-btn />
     <h1>Mon Profil</h1>
   </div>
 
@@ -31,22 +31,26 @@
       </div>
     </section>
 
-    <!-- Thème -->
+    <!-- Fond d'écran -->
     <section class="section">
-      <h2>Thème</h2>
-      <div class="theme-grid">
-        @for (theme of themes; track theme.id) {
+      <h2>Fond d'écran</h2>
+      <div class="bg-grid">
+        @for (bg of bgDefs; track bg.id) {
           <div
-            class="theme-option"
-            [class.selected]="profile.theme === theme.id"
-            [style.--t-primary]="theme.primary"
-            [style.--t-bg]="theme.bg"
-            (click)="selectTheme(theme.id)"
+            class="bg-option"
+            [class.selected]="bgService.current() === bg.id"
+            [class.locked]="!isBgUnlocked(bg.id)"
+            (click)="selectBg(bg.id)"
           >
-            <div class="theme-preview" [style.background]="theme.bg">
-              <div class="theme-bar" [style.background]="theme.primary"></div>
+            <div class="bg-swatch" [style.background]="bg.color">
+              @if (!isBgUnlocked(bg.id)) {
+                <span class="bg-lock-icon">🔒</span>
+              }
             </div>
-            <span>{{ theme.label }}</span>
+            <span class="bg-label">{{ bg.label }}</span>
+            @if (!isBgUnlocked(bg.id)) {
+              <span class="bg-lock">{{ bg.trophyLabel }}</span>
+            }
           </div>
         }
       </div>
@@ -65,6 +69,7 @@
             [class.rarity-rare]="trophy.rarity === 'rare'"
             [class.rarity-legendary]="trophy.rarity === 'legendary'"
             [style.--b-color]="trophy.color"
+            (mouseenter)="checkFlip($event)"
           >
             <span class="badge-icon">{{ trophy.icon }}</span>
             <span class="badge-title">{{ trophy.title }}</span>

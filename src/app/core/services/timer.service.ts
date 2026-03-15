@@ -1,10 +1,12 @@
-import { Injectable, signal, computed } from '@angular/core';
+import { Injectable, signal, computed, inject } from '@angular/core';
 import { GameStats } from '../models/game.model';
+import { TrophyService } from './trophy.service';
 
 @Injectable({ providedIn: 'root' })
 export class TimerService {
   private interval: ReturnType<typeof setInterval> | null = null;
 
+  private trophyService = inject(TrophyService);
   readonly totalSeconds = signal(0);
   readonly stats = signal<GameStats>({ attempts: 0, correct: 0, streak: 0 });
 
@@ -27,6 +29,9 @@ export class TimerService {
     this.stats.set({ attempts: 0, correct: 0, streak: 0 });
     this.interval = setInterval(() => {
       this.totalSeconds.update(s => s + 1);
+      if (this.totalSeconds() % 60 === 0) {
+        this.trophyService.checkChrono(this.totalSeconds() / 60);
+      }
     }, 1000);
   }
 

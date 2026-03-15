@@ -1,7 +1,8 @@
 import {
   Component, OnInit, OnDestroy, inject, signal, computed, ViewChild
 } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
+import { BackBtnComponent } from '../../shared/components/back-btn/back-btn.component';
 import { GameService } from '../../core/services/game.service';
 import { ChampionService } from '../../core/services/champion.service';
 import { TimerService } from '../../core/services/timer.service';
@@ -16,13 +17,12 @@ type FeedbackState = 'correct' | 'wrong' | 'none';
 @Component({
   selector: 'app-game',
   standalone: true,
-  imports: [PixelImageComponent, GuessInputComponent],
+  imports: [PixelImageComponent, GuessInputComponent, BackBtnComponent],
   templateUrl: './game.component.html',
   styleUrl: './game.component.scss',
 })
 export class GameComponent implements OnInit, OnDestroy {
   private route = inject(ActivatedRoute);
-  private router = inject(Router);
   private gameService = inject(GameService);
   private championService = inject(ChampionService);
   private trophyService = inject(TrophyService);
@@ -70,11 +70,6 @@ export class GameComponent implements OnInit, OnDestroy {
   }
 
   toggleHistory(): void { this.showHistory.update(v => !v); }
-
-  goBack(): void {
-    this.timer.stop();
-    this.router.navigate(['/']);
-  }
 
   async loadNextChamp(): Promise<void> {
     this.isLoading.set(true);

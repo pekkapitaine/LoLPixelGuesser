@@ -1,24 +1,23 @@
 import {
   Component, OnInit, inject, signal, computed, ViewChild
 } from '@angular/core';
-import { Router } from '@angular/router';
 import { ChampionService } from '../../core/services/champion.service';
 import { EscaladeService } from '../../core/services/escalade.service';
 import { TrophyService } from '../../core/services/trophy.service';
 import { PixelImageComponent } from '../../shared/components/pixel-image/pixel-image.component';
 import { GuessInputComponent } from '../../shared/components/guess-input/guess-input.component';
+import { BackBtnComponent } from '../../shared/components/back-btn/back-btn.component';
 
 type FeedbackState = 'correct' | 'wrong' | 'none';
 
 @Component({
   selector: 'app-escalade',
   standalone: true,
-  imports: [PixelImageComponent, GuessInputComponent],
+  imports: [PixelImageComponent, GuessInputComponent, BackBtnComponent],
   templateUrl: './escalade.component.html',
   styleUrl: './escalade.component.scss',
 })
 export class EscaladeComponent implements OnInit {
-  private router = inject(Router);
   private championService = inject(ChampionService);
   private trophyService = inject(TrophyService);
   readonly escaladeService = inject(EscaladeService);
@@ -48,8 +47,6 @@ export class EscaladeComponent implements OnInit {
     ]);
     await this.startRound();
   }
-
-  goBack(): void { this.router.navigate(['/challenge']); }
 
   async restart(): Promise<void> {
     this.round.set(0);

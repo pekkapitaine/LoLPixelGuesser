@@ -1,9 +1,7 @@
 <div class="container">
 
   <header class="top-bar">
-    <button class="back-btn" (click)="goBack()">
-      <img src="assets/interface/back_arrow.svg" alt="Retour">
-    </button>
+<app-back-btn />
     <h2 class="mode-title">🗡️ Deviner l'item</h2>
     <div class="stats-inline">
       <span>⏱️ {{ formattedTime() }}</span>
@@ -25,10 +23,7 @@
         <div class="stat-row"><span class="stat-label">🔥 Série :</span><span class="stat-value">{{ stats().streak }}</span></div>
         <div class="stat-row"><span class="stat-label">📊 Ratio :</span><span class="stat-value">{{ ratio() }} / min</span></div>
       </div>
-      <div class="arena-toggle">
-        <input type="checkbox" id="include-arena" [(ngModel)]="includeArena">
-        <label for="include-arena">Inclure Arena</label>
-      </div>
+
     </aside>
 
     <div class="image-container">
@@ -51,10 +46,6 @@
   </div>
 
   <div class="bottom-controls">
-    <div class="arena-option">
-      <input type="checkbox" id="include-arena-mobile" [(ngModel)]="includeArena">
-      <label for="include-arena-mobile">Inclure les items Arena</label>
-    </div>
     <app-guess-input
       [suggestions]="suggestions()"
       placeholder="Tape le nom de l'item..."

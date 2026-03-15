@@ -5,7 +5,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: radial-gradient(circle at center, #101820, #05060a);
+  background: transparent;
   color: #fff;
   min-height: 100vh;
   padding: 80px 20px 40px;
@@ -13,20 +13,10 @@
   position: relative;
 }
 
-.back-btn {
+app-back-btn {
   position: absolute;
   top: 20px;
   left: 20px;
-  padding: 10px 20px;
-  color: #f8d24b;
-  border: 1px solid #f8d24b;
-  border-radius: 16px;
-  background-color: transparent;
-  text-decoration: none;
-  transition: all 0.2s ease;
-
-  img { width: 16px; height: 12px; }
-  &:hover { background-color: #ffd85c; color: #000; transform: scale(1.05); }
 }
 
 h2 {

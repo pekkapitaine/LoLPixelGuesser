@@ -1,6 +1,6 @@
 <div class="trophies-page">
   <div class="page-header">
-    <a routerLink="/" class="back-btn">← Retour</a>
+    <app-back-btn />
     <h1>Trophées</h1>
     <div class="progress">
       {{ trophyService.unlockedCount() }} / {{ trophyService.trophies().length }}
@@ -26,7 +26,7 @@
             [class.rarity-common]="trophy.rarity === 'common'"
             [class.rarity-rare]="trophy.rarity === 'rare'"
             [class.rarity-legendary]="trophy.rarity === 'legendary'"
-            [style.--t-color]="trophy.color"
+            [style.--t-color]="trophy.unlocked ? trophy.color : null"
           >
             <div class="trophy-glow"></div>
 
