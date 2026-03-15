@@ -90,7 +90,10 @@ export class GameComponent implements OnInit, OnDestroy {
     }
   }
 
-  skip(): void { this.loadNextChamp(); }
+  skip(): void {
+    if (this.currentSoluce) this.champImageSrc.set(this.currentSoluce);
+    this.feedbackTimeout = setTimeout(() => this.loadNextChamp(), 1000);
+  }
 
   onQueryChange(value: string): void {
     this.suggestions.set(this.championService.filterSuggestions(value));

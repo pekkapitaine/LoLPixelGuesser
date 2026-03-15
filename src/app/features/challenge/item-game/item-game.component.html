@@ -50,7 +50,7 @@
       [suggestions]="suggestions()"
       placeholder="Tape le nom de l'item..."
       (queryChange)="onQueryChange($event)"
-      (submit)="selectSuggestion($event)"
+      (submit)="submitGuess($event)"
     />
     <div class="bottom-actions">
       <button id="skip-btn" (click)="skip()">Passer</button>

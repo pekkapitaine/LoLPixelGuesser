@@ -13,7 +13,7 @@ import { BackBtnComponent } from '../../shared/components/back-btn/back-btn.comp
 export class TrophiesComponent {
   readonly trophyService = inject(TrophyService);
 
-  readonly categories: TrophyCategory[] = ['progression', 'series', 'vitesse', 'modes', 'speciaux'];
+  readonly categories: TrophyCategory[] = ['progression', 'series', 'vitesse', 'chronometre' ,'modes', 'speciaux'];
   readonly categoryLabels = TROPHY_CATEGORY_LABELS;
 
   readonly grouped = computed(() => {

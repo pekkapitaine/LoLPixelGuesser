@@ -69,16 +69,14 @@ export class ItemGameComponent implements OnInit, OnDestroy {
   }
 
   skip(): void {
-    this.history.update(h => [{ name: this.currentItem?.name ?? '?', correct: false }, ...h]);
-    this.loadNextItem();
+    if (!this.currentItem) return;
+    this.history.update(h => [{ name: this.currentItem!.name, correct: false }, ...h]);
+    this.imageSrc.set(this.itemService.getImagePath(this.currentItem));
+    this.feedbackTimeout = setTimeout(() => this.loadNextItem(), 1000);
   }
 
   onQueryChange(value: string): void {
     this.suggestions.set(this.itemService.filterSuggestions(value, this.gameService.includeArena()));
-  }
-
-  selectSuggestion(name: string): void {
-    this.submitGuess(name);
   }
 
   submitGuess(guess: string): void {

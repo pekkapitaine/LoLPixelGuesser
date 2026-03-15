@@ -1,5 +1,5 @@
 export type Rarity = 'common' | 'rare' | 'legendary';
-export type TrophyCategory = 'progression' | 'series' | 'vitesse' | 'modes' | 'speciaux';
+export type TrophyCategory = 'progression' | 'series' | 'vitesse' | 'chronometre' | 'modes' | 'speciaux';
 
 export const TROPHY_CATEGORY_LABELS: Record<TrophyCategory, string> = {
   progression: '📈 Progression',
@@ -7,6 +7,7 @@ export const TROPHY_CATEGORY_LABELS: Record<TrophyCategory, string> = {
   vitesse:     '⚡ Vitesse',
   modes:       '🎮 Modes de jeu',
   speciaux:    '🎁 Spéciaux',
+  chronometre : '⏱️ Chronomètre',
 };
 
 export interface TrophyDef {
@@ -41,9 +42,9 @@ export const TROPHIES: TrophyDef[] = [
   { id: 'extreme_mode',   title: 'Masochiste',         description: 'Jouer en mode Extrême',                      icon: '😈', color: '#dc2626', isSecret: false, rarity: 'common',    category: 'modes'       },
   { id: 'challenge_mode', title: 'Même pas peur',      description: 'Aller dans la section Challenges',           icon: '⚔️', color: '#7c3aed', isSecret: false, rarity: 'common',    category: 'modes'       },
   { id: 'groot',          title: 'Groot',              description: 'Je s\'appelle Groot',                        icon: '🪵', color: '#4e2e05', isSecret: false, rarity: 'legendary', category: 'speciaux'   },
-  { id: 'small_player',   title: 'Petit Joueur',       description: 'Le chrono atteint 1 minute',                    icon: '👶', color: '#64748b', isSecret: false, rarity: 'common',    category: 'speciaux'   },
-  { id: 'real_player',    title: 'Vrai Joueur',        description: 'Le chrono atteint 5 minutes',                   icon: '🧑', color: '#64748b', isSecret: false,  rarity: 'common',    category: 'speciaux'   },
-  { id: 'try_harder',     title: 'Essaie encore',      description: 'Le chrono atteint 10 minutes',                  icon: '👨‍🦳', color: '#64748b', isSecret: false,  rarity: 'rare',      category: 'speciaux'   },
-  { id: 'accro',          title: 'Accro',              description: 'Le chrono atteint 30 minutes',                  icon: '👴', color: '#64748b', isSecret: false,  rarity: 'rare',      category: 'speciaux'   },
-  { id: 'fall_asleep',    title: 'Dormeur',            description: 'Le chrono atteint 1 heure',       icon: '💤', color: '#64748b', isSecret: false,  rarity: 'rare',    category: 'speciaux'   }
+  { id: 'small_player',   title: 'Petit Joueur',       description: 'Le chrono atteint 1 minute',                    icon: '👶', color: '#64748b', isSecret: false, rarity: 'common',    category: 'chronometre'   },
+  { id: 'real_player',    title: 'Vrai Joueur',        description: 'Le chrono atteint 5 minutes',                   icon: '🧑', color: '#64748b', isSecret: false,  rarity: 'common',    category: 'chronometre'   },
+  { id: 'try_harder',     title: 'Tryhardeur',      description: 'Le chrono atteint 10 minutes',                  icon: '👨‍🦳', color: '#64748b', isSecret: false,  rarity: 'rare',      category: 'chronometre'   },
+  { id: 'accro',          title: 'Accro',              description: 'Le chrono atteint 30 minutes',                  icon: '👴', color: '#64748b', isSecret: false,  rarity: 'rare',      category: 'chronometre'   },
+  { id: 'fall_asleep',    title: 'Dormeur',            description: 'Le chrono atteint 1 heure',       icon: '💤', color: '#64748b', isSecret: false,  rarity: 'rare',    category: 'chronometre'   }
 ];

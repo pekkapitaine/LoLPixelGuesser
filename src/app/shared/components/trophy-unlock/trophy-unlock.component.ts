@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, OnDestroy } from '@angular/core';
+import { Component, inject, OnDestroy, effect } from '@angular/core';
 import { TrophyService } from '../../../core/services/trophy.service';
 
 @Component({
@@ -7,21 +7,28 @@ import { TrophyService } from '../../../core/services/trophy.service';
   templateUrl: './trophy-unlock.component.html',
   styleUrl: './trophy-unlock.component.scss',
 })
-export class TrophyUnlockComponent implements OnInit, OnDestroy {
+export class TrophyUnlockComponent implements OnDestroy {
   readonly trophy = inject(TrophyService);
 
   confetti: { x: number; y: number; color: string; size: number; rotation: number; speed: number; drift: number }[] = [];
   private timer: any;
 
-  ngOnInit(): void {}
+  constructor() {
+    effect(() => {
+      const t = this.trophy.pendingUnlock();
+      if (t) {
+        clearTimeout(this.timer);
+        this.confetti = [];
+        setTimeout(() => {
+          this.generateConfetti();
+          this.timer = setTimeout(() => this.trophy.clearPendingUnlock(), 10000);
+        }, 0);
+      }
+    });
+  }
 
   ngOnDestroy(): void {
     clearTimeout(this.timer);
-  }
-
-  onAnimationStart(): void {
-    this.generateConfetti();
-    this.timer = setTimeout(() => this.trophy.clearPendingUnlock(), 10000);
   }
 
   generateConfetti(): void {
