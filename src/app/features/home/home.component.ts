@@ -16,7 +16,7 @@ import { AVATARS } from '../../core/models/profile.model';
   styleUrl: './home.component.scss',
 })
 export class HomeComponent implements OnInit {
-  private router = inject(Router);
+  public router = inject(Router);
   private gameService = inject(GameService);
   readonly pwa = inject(PwaService);
   readonly profileService = inject(ProfileService);

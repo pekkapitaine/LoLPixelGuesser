@@ -46,4 +46,18 @@ export class ProfileComponent {
     el.classList.toggle('tooltip-flip', rect.right + 160 > window.innerWidth);
   }
 
+  share(): void {
+    const p = this.profile;
+    const avatar = this.avatars[p.avatarIndex];
+    const pseudo = p.pseudo || 'Anonyme';
+    const trophies = this.trophyService.unlockedCount();
+    const total = this.trophyService.trophies().length;
+    const body = [
+      `${avatar} ${pseudo} sur LoL Pixel Guesser !`,
+      `🏆 ${trophies} trophées débloqués`,
+      `👉 https://pekkapitaine.github.io/LoLPixelGuesser/`,
+    ].join('\n');
+    window.open(`sms:?body=${encodeURIComponent(body)}`, '_self');
+  }
+
 }

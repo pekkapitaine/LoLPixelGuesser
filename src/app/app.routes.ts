@@ -5,6 +5,10 @@ export const routes: Routes = [
     path: '',
     loadComponent: () => import('./features/home/home.component').then(m => m.HomeComponent),
   },
+    {
+    path: 'about',
+    loadComponent: () => import('./features/about/about.component').then(m => m.AboutComponent),
+  },
   {
     path: 'infinite/champion/:difficulty',
     loadComponent: () => import('./features/game/game.component').then(m => m.GameComponent),
