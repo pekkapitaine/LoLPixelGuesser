@@ -104,7 +104,7 @@
 
 @media (max-width: 768px) {
   .app-header .game-logo {
-    height: 36px;
+    height: 48px;
   }
 }
 
@@ -160,7 +160,6 @@
   }
 
   &:has(> a):hover {
-    transform: scale(1.02);
     box-shadow: 0 0 30px #f8d24b55;
     cursor: var(--cursor-red), pointer;
   }
@@ -178,8 +177,6 @@
   background: linear-gradient(135deg, #0a2a1e 0%, #0d3828 60%, #141820 100%);
   border-color: #1a7050;
   box-shadow: 0 0 24px #0a3a28;
-
-  &:hover { box-shadow: 0 0 32px #1a7050; }
 }
 
 .challenges-section {
@@ -344,7 +341,6 @@ footer {
 
   .game-logo {
     height: 13vh;
-    margin-top: 20px;
   }
 
   .modes-container {

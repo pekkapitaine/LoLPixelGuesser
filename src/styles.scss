@@ -2,6 +2,12 @@
   box-sizing: border-box;
 }
 
+html {
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #f8d24b #1a1d22;
+}
+
 html, body {
   margin: 0;
   padding: 0;
@@ -16,11 +22,8 @@ html, body {
   -webkit-user-select: none;
   user-select: none;
   font-size: clamp(12px, 4vw, 20px);
-  scrollbar-width: thin;
-  scrollbar-color: #f8d24b #1a1d22;
   background: #1e1e2f;
   color: #fff;
-  overflow-y: auto;
 }
 
 

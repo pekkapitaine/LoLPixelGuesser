@@ -9,17 +9,20 @@
   flex-direction: column;
   flex: 1;
   background: transparent;
-  min-height: 100vh;
   color: #fff;
 }
 
 .page-header {
   display: flex;
+  position: sticky;
+  top: 0;
   align-items: center;
   gap: 20px;
-  padding: 20px 24px;
+  padding: 16px 24px;
   border-bottom: 1px solid rgba(255,255,255,0.08);
-  background: rgba(0,0,0,0.3);
+  background: rgba(0,0,0,0.5);
+  backdrop-filter: blur(10px);
+  z-index: 10;
 
   h1 {
     margin: 0;
@@ -44,6 +47,7 @@
   max-width: 600px;
   width: 100%;
   margin: 0 auto;
+  box-sizing: border-box;
 }
 
 .current-avatar {
@@ -112,9 +116,9 @@
 }
 
 .avatar-option {
-  font-size: 1.8rem;
   width: 100%;
   aspect-ratio: 1;
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -123,12 +127,26 @@
   border: 2px solid transparent;
   cursor: pointer;
   transition: all 0.2s;
+  overflow: hidden;
+
+  .avatar-opt-emoji { font-size: 1.8rem; }
 
   &:hover { background: rgba(255,255,255,0.12); }
   &.selected {
-    border-color:  #f8d24b;
+    border-color: #f8d24b;
     background: rgba(248, 210, 75, 0.12);
     box-shadow: 0 0 12px rgba(248, 210, 75, 0.3);
+  }
+
+  &.locked {
+    cursor: default;
+    .avatar-opt-emoji { opacity: 0.25; filter: grayscale(1); }
+  }
+
+  .avatar-lock-overlay {
+    position: absolute;
+    font-size: 1rem;
+    pointer-events: none;
   }
 }
 
@@ -192,6 +210,15 @@
   color: rgba(255,255,255,0.4);
   margin-top: 2px;
 }
+
+.avatar-swatch {
+  background: rgba(255,255,255,0.05) !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.avatar-emoji { font-size: 1.6rem; }
 
 .badges-grid {
   display: flex;
@@ -341,8 +368,8 @@
   }
 }
 
-.badge:hover .badge-tooltip { display: block; }
-.badge:active .badge-tooltip { display: block; }
+.badge:hover .badge-tooltip,
+.badge.tooltip-open .badge-tooltip { display: block; }
 
 .no-badges {
   color: #666;

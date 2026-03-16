@@ -1,10 +1,12 @@
 import { Injectable, signal, computed, inject } from '@angular/core';
 import { Trophy, TROPHIES } from '../models/trophy.model';
 import { BackgroundService, BG_DEFS } from './background.service';
+import { AvatarService, AVATAR_DEFS } from './avatar.service';
 
 @Injectable({ providedIn: 'root' })
 export class TrophyService {
   private readonly bgService = inject(BackgroundService);
+  private readonly avatarService = inject(AvatarService);
   private readonly STORAGE_KEY = 'lpg_trophies';
   private readonly CORRECT_KEY = 'lpg_total_correct';
 
@@ -70,9 +72,11 @@ export class TrophyService {
     this._unlockQueue.push(unlockedTrophy);
     this.showNext();
 
-    // Unlock associated background if any
     const bgEntry = Object.values(BG_DEFS).find(bg => bg.trophyId === id);
     if (bgEntry) this.bgService.unlock(bgEntry.id);
+
+    const avatarEntry = AVATAR_DEFS.find(a => a.trophyId === id);
+    if (avatarEntry) this.avatarService.unlock(avatarEntry.id);
   }
 
   clearPendingUnlock(): void {
@@ -109,6 +113,10 @@ export class TrophyService {
     if (minutes >= 5) this.unlock('real_player');
     if (minutes >= 10) this.unlock('try_harder');
     if (minutes >= 30) this.unlock('accro');
-    if (minutes >= 60) this.unlock('fall_asleep');
+    if (minutes >= 180) this.unlock('afk');
+  }
+
+  checkShared(): void {
+    this.unlock('share');
   }
 }

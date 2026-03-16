@@ -8,11 +8,11 @@
 
     <!-- Avatar actuel -->
     <div class="current-avatar">
-      <div class="avatar-display">{{ avatars[profile.avatarIndex] }}</div>
+      <div class="avatar-display">{{ avatarService.currentEmoji }}</div>
       <input
         class="pseudo-input"
         [(ngModel)]="pseudo"
-        maxlength="20"
+        maxlength="12"
         placeholder="Ton pseudo..."
       />
     </div>
@@ -21,19 +21,26 @@
     <section class="section">
       <h2>Avatar</h2>
       <div class="avatar-grid">
-        @for (avatar of avatars; track $index) {
+        @for (avatar of avatarDefs; track avatar.id) {
           <div
             class="avatar-option"
-            [class.selected]="profile.avatarIndex === $index"
-            (click)="selectAvatar($index)"
-          >{{ avatar }}</div>
+            [class.selected]="avatarService.current() === avatar.id"
+            [class.locked]="!isAvatarUnlocked(avatar.id)"
+            (click)="selectAvatar(avatar.id)"
+            [title]="!isAvatarUnlocked(avatar.id) ? ('🔒 ' + avatar.trophyLabel) : avatar.label"
+          >
+            <span class="avatar-opt-emoji">{{ avatar.emoji }}</span>
+            @if (!isAvatarUnlocked(avatar.id)) {
+              <span class="avatar-lock-overlay">🔒</span>
+            }
+          </div>
         }
       </div>
     </section>
 
-    <!-- Fond d'écran -->
+    <!-- Thèmes -->
     <section class="section">
-      <h2>Fond d'écran</h2>
+      <h2>Thèmes</h2>
       <div class="bg-grid">
         @for (bg of bgDefs; track bg.id) {
           <div
@@ -70,6 +77,7 @@
             [class.rarity-legendary]="trophy.rarity === 'legendary'"
             [style.--b-color]="trophy.color"
             (mouseenter)="checkFlip($event)"
+            (click)="toggleTooltip($event)"
           >
             <span class="badge-icon">{{ trophy.icon }}</span>
             <span class="badge-title">{{ trophy.title }}</span>

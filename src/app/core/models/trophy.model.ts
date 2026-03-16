@@ -46,5 +46,6 @@ export const TROPHIES: TrophyDef[] = [
   { id: 'real_player',    title: 'Vrai Joueur',        description: 'Le chrono atteint 5 minutes',                   icon: '🧑', color: '#64748b', isSecret: false,  rarity: 'common',    category: 'chronometre'   },
   { id: 'try_harder',     title: 'Tryhardeur',      description: 'Le chrono atteint 10 minutes',                  icon: '👨‍🦳', color: '#64748b', isSecret: false,  rarity: 'rare',      category: 'chronometre'   },
   { id: 'accro',          title: 'Accro',              description: 'Le chrono atteint 30 minutes',                  icon: '👴', color: '#64748b', isSecret: false,  rarity: 'rare',      category: 'chronometre'   },
-  { id: 'fall_asleep',    title: 'Dormeur',            description: 'Le chrono atteint 1 heure',       icon: '💤', color: '#64748b', isSecret: false,  rarity: 'rare',    category: 'chronometre'   }
+  { id: 'afk',            title: 'afk',            description: 'Le chrono atteint 3 heures',       icon: '💤', color: '#64748b', isSecret: true,  rarity: 'legendary',    category: 'chronometre'   },
+  { id: 'share',          title: 'Partageur',            description: 'Partager ton profil',       icon: '🔗', color: '#002d6d', isSecret: false,  rarity: 'common',    category: 'speciaux'   }
 ];
