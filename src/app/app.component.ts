@@ -23,5 +23,10 @@ export class AppComponent implements OnInit {
     this.pwa.init();
     this.router.events.pipe(filter(e => e instanceof NavigationEnd))
       .subscribe(() => window.scrollTo(0, 0));
+    const splash = document.getElementById('splash');
+    if (splash) {
+      splash.classList.add('fade-out');
+      setTimeout(() => splash.remove(), 500);
+    }
   }
 }
