@@ -38,14 +38,12 @@
     </div>
     
     <!-- items -->
-    <div class="mode-section items-section">
-      <a routerLink="/infinite/item">
-        <h2>🗡️ Items</h2>
-        <h3>Deviner l'item</h3>
-      </a>
+    <div class="mode-section items-section" routerLink="/infinite/item">
+      <h2>🗡️ Items</h2>
+      <h3>Deviner l'item</h3>
       <div class="game-option" (click)="$event.stopPropagation()">
-        <input type="checkbox" id="include-arena" [(ngModel)]="includeArena">
-        <label for="include-arena">Arena</label>
+        <input type="checkbox" id="include-arena" [(ngModel)]="includeArena" (click)="$event.stopPropagation()">
+        <label for="include-arena" (click)="$event.stopPropagation()">Arena</label>
       </div>
     </div>
 

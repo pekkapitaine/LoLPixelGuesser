@@ -5,11 +5,14 @@
 
   <div class="challenges-grid">
     <a routerLink="/escalade" class="challenge-card escalade-card">
+      @if (escaladeService.bestScore() > 0) {
+        <div class="medal-badge">
+          <img src="assets/interface/medaille.png" alt="Record" class="medal-img">
+          <span class="medal-value">{{ escaladeService.bestScore() }}</span>
+        </div>
+      }
       <div class="challenge-icon">📈</div>
       <h3>Escalade</h3>
-      @if (escaladeService.bestScore() > 0) {
-        <div class="best-score-badge">🏅 Record : {{ escaladeService.bestScore() }}</div>
-      }
     </a>
   </div>
 </div>

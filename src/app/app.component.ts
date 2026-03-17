@@ -25,8 +25,8 @@ export class AppComponent implements OnInit {
       .subscribe(() => window.scrollTo(0, 0));
     const splash = document.getElementById('splash');
     if (splash) {
-      splash.classList.add('fade-out');
-      setTimeout(() => splash.remove(), 500);
+      setTimeout(() => splash.classList.add('fade-out'), 500);
+      setTimeout(() => splash.remove(), 1000);
     }
   }
 }
