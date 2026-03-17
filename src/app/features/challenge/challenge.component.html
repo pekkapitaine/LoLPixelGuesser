@@ -13,6 +13,19 @@
       }
       <div class="challenge-icon">📈</div>
       <h3>Escalade</h3>
+      <p>Survive le plus longtemps possible</p>
+    </a>
+
+    <a routerLink="/chrono" class="challenge-card chrono-card">
+      @if (chronoService.bestTime() !== null) {
+        <div class="medal-badge">
+          <img src="assets/interface/medaille.png" alt="Record" class="medal-img">
+          <span class="medal-value">{{ chronoService.formattedBest() }}</span>
+        </div>
+      }
+      <div class="challenge-icon">⏱️</div>
+      <h3>Chrono</h3>
+      <p>10 champions, le plus vite possible</p>
     </a>
   </div>
 </div>

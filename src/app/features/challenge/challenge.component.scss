@@ -114,6 +114,13 @@ h2 {
   &:hover { border-color: #4ade8088; box-shadow: 0 8px 30px #4ade8033; }
 }
 
+.chrono-card {
+  border-color: #38bdf833;
+  box-shadow: 0 0 20px #38bdf811;
+  h3 { color: #38bdf8; }
+  &:hover { border-color: #38bdf888; box-shadow: 0 8px 30px #38bdf833; }
+}
+
 .best-score-badge {
   margin-top: 4px;
   background: rgba(74, 222, 128, 0.12);

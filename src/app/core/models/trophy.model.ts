@@ -47,5 +47,6 @@ export const TROPHIES: TrophyDef[] = [
   { id: 'try_harder',     title: 'Tryhardeur',      description: 'Le chrono atteint 10 minutes',                  icon: '👨‍🦳', color: '#64748b', isSecret: false,  rarity: 'rare',      category: 'chronometre'   },
   { id: 'accro',          title: 'Accro',              description: 'Le chrono atteint 30 minutes',                  icon: '👴', color: '#64748b', isSecret: false,  rarity: 'rare',      category: 'chronometre'   },
   { id: 'afk',            title: 'afk',            description: 'Le chrono atteint 3 heures',       icon: '💤', color: '#64748b', isSecret: true,  rarity: 'legendary',    category: 'chronometre'   },
-  { id: 'share',          title: 'Partageur',            description: 'Partager ton profil',       icon: '🔗', color: '#002d6d', isSecret: false,  rarity: 'common',    category: 'speciaux'   }
+  { id: 'share',          title: 'Partageur',            description: 'Partager ton profil',       icon: '🔗', color: '#002d6d', isSecret: false,  rarity: 'common',    category: 'speciaux'   },
+  { id: 'speed_light', title:'Vitesse de la lumière',      description: 'Moins de 30s au challenge du chrono',       icon:'🐇', color: '#a0cc00', isSecret: false,  rarity: 'rare',    category: 'modes'   },
 ];

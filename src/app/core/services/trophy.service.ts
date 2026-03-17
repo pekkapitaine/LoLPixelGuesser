@@ -119,4 +119,8 @@ export class TrophyService {
   checkShared(): void {
     this.unlock('share');
   }
+
+  checkChronoChallenge(seconds: number) : void  {
+    if (seconds <= 30) this.unlock('speed_light')
+  }
 }

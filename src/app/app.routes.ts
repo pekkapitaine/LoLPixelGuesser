@@ -26,6 +26,10 @@ export const routes: Routes = [
     loadComponent: () => import('./features/challenge/challenge.component').then(m => m.ChallengeComponent),
   },
   {
+    path: 'chrono',
+    loadComponent: () => import('./features/challenge/chrono-game/chrono-game.component').then(m => m.ChronoGameComponent),
+  },
+  {
     path: 'profile',
     loadComponent: () => import('./features/profile/profile.component').then(m => m.ProfileComponent),
   },

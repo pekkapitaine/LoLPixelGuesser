@@ -1,0 +1,63 @@
+<div class="container">
+
+  <header class="top-bar">
+    <app-back-btn route="/challenge" />
+    <h2 class="mode-title">⏱️ Chrono</h2>
+    <div class="timer-display">{{ formattedElapsed() }}</div>
+  </header>
+
+  @if (countingDown()) {
+    <div class="countdown-overlay">
+      @switch (countdown()) {
+        @case (3) { <span class="countdown-number">3</span> }
+        @case (2) { <span class="countdown-number">2</span> }
+        @case (1) { <span class="countdown-number">1</span> }
+      }
+    </div>
+  }
+
+  @if (!finished()) {
+    <div class="progress-row" [class.hidden]="countingDown()">
+      <div class="progress-dots">
+        @for (i of [0,1,2,3,4,5,6,7,8,9]; track i) {
+          <span class="dot" [class.done]="i < currentIndex()" [class.active]="i === currentIndex()"></span>
+        }
+      </div>
+      <span class="progress-label">{{ currentIndex() + 1 }} / {{ total }}</span>
+    </div>
+
+    <div class="game-area" [class.hidden]="countingDown()">
+      <div class="image-container">
+        <app-pixel-image [src]="imageSrc()" [feedback]="feedback()" [isLoading]="isLoading()" [overlay]="false" />
+      </div>
+    </div>
+
+    <div class="bottom-controls" [class.hidden]="countingDown()">
+      <app-guess-input
+        [suggestions]="suggestions()"
+        placeholder="Nom du champion..."
+        (queryChange)="onQueryChange($event)"
+        (submit)="selectSuggestion($event)"
+      />
+    </div>
+  }
+
+  @if (finished()) {
+    <div class="finish-panel">
+      <div class="finish-icon">🏁</div>
+      <div class="finish-time">{{ formattedElapsed() }}</div>
+      @if (isNewRecord()) {
+        <div class="new-record">🏆 Nouveau record !</div>
+      } @else {
+        <div class="best-time-row">
+          Record : <strong>{{ chronoService.formattedBest() }}</strong>
+        </div>
+      }
+      <div class="finish-actions">
+        <button class="restart-btn" (click)="replay()">↺ Rejouer</button>
+        <button class="back-btn-action" (click)="goBack()">← Retour</button>
+      </div>
+    </div>
+  }
+
+</div>
