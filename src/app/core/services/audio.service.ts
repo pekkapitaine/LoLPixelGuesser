@@ -20,11 +20,19 @@ export class AudioService {
       volume: 0.3
     });
 
-    this.sounds['unlock'] = new Howl({
-      src: ['assets/audio/unlock.mp3'],
+    this.sounds['unlock_common'] = new Howl({
+      src: ['assets/audio/unlock_common.mp3'],
       volume: 0.7
     });
 
+    this.sounds['unlock_rare'] = new Howl({
+      src: ['assets/audio/unlock_rare.mp3'],
+      volume: 0.7
+    });
+    this.sounds['unlock_legendary'] = new Howl({
+      src: ['assets/audio/unlock_legendary.mp3'],
+      volume: 0.7
+    });
     // // 🔊 effets
     // this.sounds['click'] = new Howl({
     //   src: ['assets/audio/click.mp3'],
@@ -64,5 +72,7 @@ export class AudioService {
 
 export enum Sound {
   BG = 'bg',
-  UNLOCK = 'unlock'
+  UNLOCK_COMMON = 'unlock_common',
+  UNLOCK_RARE = 'unlock_rare',
+  UNLOCK_LEGENDARY = 'unlock_legendary'
 }

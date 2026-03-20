@@ -12,7 +12,16 @@ export class PixelImageComponent {
   @Input() isLoading = false;
   @Input() alt = 'Image pixelisée';
   @Input() overlay = true;
+  @Input() fill = false;
+
+  @HostBinding('class.fill') get isFill() { return this.fill; }
 
   @HostBinding('class.is-correct') get isCorrect() { return this.feedback === 'correct'; }
   @HostBinding('class.is-wrong') get isWrong() { return this.feedback === 'wrong'; }
+
+  private _lastFeedback: 'correct' | 'wrong' = 'correct';
+  get displayFeedback(): 'correct' | 'wrong' {
+    if (this.feedback !== 'none') this._lastFeedback = this.feedback;
+    return this._lastFeedback;
+  }
 }

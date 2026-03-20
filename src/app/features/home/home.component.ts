@@ -6,7 +6,6 @@ import { PwaService } from '../../core/services/pwa.service';
 import { ProfileService } from '../../core/services/profile.service';
 import { TrophyService } from '../../core/services/trophy.service';
 import { Difficulty, DIFFICULTY_LABELS } from '../../core/models/champion.model';
-import { AVATARS } from '../../core/models/profile.model';
 import { AudioService } from '../../core/services/audio.service';
 
 @Component({
@@ -23,7 +22,6 @@ export class HomeComponent implements OnInit {
   readonly profileService = inject(ProfileService);
   readonly trophyService = inject(TrophyService);
   readonly audioService = inject(AudioService)
-  readonly avatars = AVATARS;
 
   get profile() { return this.profileService.profile(); }
 
@@ -53,15 +51,9 @@ export class HomeComponent implements OnInit {
   }
 
   turnSound() {
-    if (this.isBgSoundActive()) {
-      localStorage.setItem('audio_on_off', 'false');
-      this.isBgSoundActive.set(false);
-      this.audioService.stopMusic()
-    }
-    else {
-      localStorage.setItem('audio_on_off', 'true');
-      this.isBgSoundActive.set(true);
-      this.audioService.playMusic()
-    }
+    const newState = !this.isBgSoundActive();
+    this.isBgSoundActive.set(newState);
+    localStorage.setItem('audio_on_off', JSON.stringify(newState));
+    this.audioService.mute(!newState);
   }
 }

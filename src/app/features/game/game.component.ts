@@ -72,6 +72,7 @@ export class GameComponent implements OnInit, OnDestroy {
   toggleHistory(): void { this.showHistory.update(v => !v); }
 
   async loadNextChamp(): Promise<void> {
+    this.gameService.resetHistory();
     this.isLoading.set(true);
     try {
       const entry = this.championService.getRandomImage(this.gameService.includeSkins());

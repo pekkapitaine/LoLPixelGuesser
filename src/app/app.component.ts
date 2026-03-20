@@ -17,7 +17,6 @@ import { AudioService } from './core/services/audio.service';
 })
 export class AppComponent implements OnInit {
   private pwa = inject(PwaService);
-  private profile = inject(ProfileService);
   private router = inject(Router);
   private audio = inject(AudioService)
 
@@ -25,11 +24,8 @@ export class AppComponent implements OnInit {
     this.pwa.init();
     this.router.events.pipe(filter(e => e instanceof NavigationEnd))
       .subscribe(() => window.scrollTo(0, 0));
-    const splash = document.getElementById('splash');
-    if (splash) {
-      setTimeout(() => splash.classList.add('fade-out'), 500);
-      setTimeout(() => splash.remove(), 1000);
-    }
-    this.audio.playMusic()
+    const soundOn = localStorage.getItem('audio_on_off');
+    if (soundOn === 'false') this.audio.mute(true);
+    document.getElementById('play-btn')?.addEventListener('click', () => this.audio.playMusic());
   }
 }

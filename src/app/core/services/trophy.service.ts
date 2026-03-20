@@ -28,9 +28,7 @@ export class TrophyService {
     const next = this._unlockQueue.shift();
     if (next) {
       this._pendingUnlock.set(next);
-      
     }
-
   }
 
   private load(): Trophy[] {

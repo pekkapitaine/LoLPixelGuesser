@@ -1,18 +1,11 @@
-export type Theme = 'dark' | 'gold' | 'blue' | 'purple';
-
 export interface Profile {
   pseudo: string;
-  avatarIndex: number;
-  theme: Theme;
+  avatar: string;
+  theme: string;
 }
 
 export const DEFAULT_PROFILE: Profile = {
   pseudo: 'Invocateur',
-  avatarIndex: 0,
+  avatar: '🔥',
   theme: 'dark',
 };
-export const AVATARS = [
-  '🐺', '🦁', '🐉', '🦊', '🦅', '🐺',
-  '⚡', '🔥', '💎', '🌙', '❄️', '🌊',
-  '🎯', '👑', '🛡️', '⚔️', '🎮', '🏆',
-];

@@ -28,7 +28,7 @@ export class ItemGameComponent implements OnInit, OnDestroy {
   readonly suggestions = signal<string[]>([]);
   readonly isLoading = signal(true);
   readonly showHistory = signal(false);
-  readonly history = signal<{ name: string; correct: boolean }[]>([]);
+  readonly history = this.gameService.history;
   readonly stats = this.timer.stats;
   readonly formattedTime = this.timer.formattedTime;
   readonly ratio = this.timer.ratio;
@@ -39,6 +39,7 @@ export class ItemGameComponent implements OnInit, OnDestroy {
   @ViewChild(GuessInputComponent) guessInput!: GuessInputComponent;
 
   async ngOnInit(): Promise<void> {
+    this.gameService.resetHistory();
     await this.itemService.loadData();
     this.timer.start();
     await this.loadNextItem();
@@ -52,6 +53,7 @@ export class ItemGameComponent implements OnInit, OnDestroy {
   toggleHistory(): void { this.showHistory.update(v => !v); }
 
   async loadNextItem(): Promise<void> {
+    this.gameService.resetHistory();
     this.isLoading.set(true);
     try {
       const item = this.itemService.getRandomItem(this.gameService.includeArena());
@@ -70,7 +72,7 @@ export class ItemGameComponent implements OnInit, OnDestroy {
 
   skip(): void {
     if (!this.currentItem) return;
-    this.history.update(h => [{ name: this.currentItem!.name, correct: false }, ...h]);
+    this.history.update(h => [{ champion: this.currentItem!.name, correct: false }, ...h]);
     this.imageSrc.set(this.itemService.getImagePath(this.currentItem));
     this.feedbackTimeout = setTimeout(() => this.loadNextItem(), 1000);
   }
@@ -86,7 +88,7 @@ export class ItemGameComponent implements OnInit, OnDestroy {
     const correct = this.itemService.normalizeStr(this.currentItem.name);
     if (normalized === correct) {
       this.timer.incrementCorrect();
-      this.history.update(h => [{ name: this.currentItem!.name, correct: true }, ...h]);
+      this.history.update(h => [{ champion: this.currentItem!.name, correct: true }, ...h]);
       this.feedback.set('correct');
       this.imageSrc.set(this.itemService.getImagePath(this.currentItem));
       this.feedbackTimeout = setTimeout(() => {
@@ -95,7 +97,7 @@ export class ItemGameComponent implements OnInit, OnDestroy {
       }, 1000);
     } else {
       this.timer.resetStreak();
-      this.history.update(h => [{ name: guess, correct: false }, ...h]);
+      this.history.update(h => [{ champion: guess, correct: false }, ...h]);
       this.feedback.set('wrong');
       this.feedbackTimeout = setTimeout(() => { this.feedback.set('none'); }, 2000);
     }

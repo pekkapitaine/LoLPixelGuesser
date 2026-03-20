@@ -27,7 +27,7 @@
     </aside>
 
     <div class="image-container">
-      <app-pixel-image [src]="imageSrc()" [feedback]="feedback()" [isLoading]="isLoading()" />
+      <app-pixel-image [src]="imageSrc()" [feedback]="feedback()" [isLoading]="isLoading()" [fill]="true" />
     </div>
 
     <aside class="side-panel history-panel">
@@ -36,7 +36,7 @@
         <ul>
           @for (entry of history(); track $index) {
             <li [class.correct]="entry.correct" [class.wrong]="!entry.correct">
-              {{ entry.correct ? '✅' : '❌' }} {{ entry.name }}
+              {{ entry.correct ? '✅' : '❌' }} {{ entry.champion }}
             </li>
           }
         </ul>
@@ -66,7 +66,7 @@
     <ul>
       @for (entry of history(); track $index) {
         <li [class.correct]="entry.correct" [class.wrong]="!entry.correct">
-          {{ entry.correct ? '✅' : '❌' }} {{ entry.name }}
+          {{ entry.correct ? '✅' : '❌' }} {{ entry.champion }}
         </li>
       }
     </ul>

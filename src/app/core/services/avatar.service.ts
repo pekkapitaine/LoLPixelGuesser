@@ -33,7 +33,7 @@ export class AvatarService {
   readonly unlocked = signal<string[]>(this.loadUnlocked());
 
   get currentEmoji(): string {
-    return AVATAR_DEFS.find(a => a.id === this.current())?.emoji ?? '🐺';
+    return AVATAR_DEFS.find(a => a.id === this.current())?.emoji ?? '🔥';
   }
 
   select(id: string): void {
@@ -51,7 +51,7 @@ export class AvatarService {
 
   private loadCurrent(): string {
     const saved = localStorage.getItem(STORAGE_AVATAR);
-    return saved && AVATAR_DEFS.find(a => a.id === saved) ? saved : 'loup';
+    return saved && AVATAR_DEFS.find(a => a.id === saved) ? saved : 'feu';
   }
 
   private loadUnlocked(): string[] {

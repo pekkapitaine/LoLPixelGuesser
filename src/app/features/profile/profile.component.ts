@@ -2,7 +2,7 @@ import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ProfileService } from '../../core/services/profile.service';
 import { TrophyService } from '../../core/services/trophy.service';
-import { BackgroundService, BG_DEFS, BgType } from '../../core/services/background.service';
+import { BackgroundService, BG_DEFS } from '../../core/services/background.service';
 import { AvatarService, AVATAR_DEFS } from '../../core/services/avatar.service';
 import { BackBtnComponent } from '../../shared/components/back-btn/back-btn.component';
 
@@ -38,11 +38,11 @@ export class ProfileComponent {
     return this.avatarService.unlocked().includes(id);
   }
 
-  selectBg(id: BgType): void {
+  selectBg(id: string): void {
     this.bgService.select(id);
   }
 
-  isBgUnlocked(id: BgType): boolean {
+  isBgUnlocked(id: string): boolean {
     return this.bgService.unlocked().includes(id);
   }
 
