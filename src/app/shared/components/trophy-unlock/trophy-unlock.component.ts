@@ -1,5 +1,6 @@
 import { Component, inject, OnDestroy, effect } from '@angular/core';
 import { TrophyService } from '../../../core/services/trophy.service';
+import { AudioService, Sound } from '../../../core/services/audio.service';
 
 @Component({
   selector: 'app-trophy-unlock',
@@ -9,6 +10,7 @@ import { TrophyService } from '../../../core/services/trophy.service';
 })
 export class TrophyUnlockComponent implements OnDestroy {
   readonly trophy = inject(TrophyService);
+  readonly audio = inject(AudioService)
 
   confetti: { x: number; y: number; color: string; size: number; rotation: number; speed: number; drift: number }[] = [];
   private timer: any;
@@ -22,6 +24,7 @@ export class TrophyUnlockComponent implements OnDestroy {
         setTimeout(() => {
           this.generateConfetti();
           this.timer = setTimeout(() => this.trophy.clearPendingUnlock(), 10000);
+          this.audio.play(Sound.UNLOCK)
         }, 0);
       }
     });

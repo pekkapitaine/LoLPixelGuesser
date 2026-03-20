@@ -5,13 +5,13 @@ import { PwaService } from './core/services/pwa.service';
 import { ProfileService } from './core/services/profile.service';
 import { InstallModalComponent } from './shared/components/install-modal/install-modal.component';
 import { TrophyUnlockComponent } from './shared/components/trophy-unlock/trophy-unlock.component';
-import { ChangelogComponent } from './shared/components/changelog/changelog.component';
+
 import { AudioService } from './core/services/audio.service';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, InstallModalComponent, TrophyUnlockComponent, ChangelogComponent],
+  imports: [RouterOutlet, InstallModalComponent, TrophyUnlockComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
@@ -30,5 +30,6 @@ export class AppComponent implements OnInit {
       setTimeout(() => splash.classList.add('fade-out'), 500);
       setTimeout(() => splash.remove(), 1000);
     }
+    this.audio.playMusic()
   }
 }

@@ -20,16 +20,21 @@ export class AudioService {
       volume: 0.3
     });
 
-    // 🔊 effets
-    this.sounds['click'] = new Howl({
-      src: ['assets/audio/click.mp3'],
+    this.sounds['unlock'] = new Howl({
+      src: ['assets/audio/unlock.mp3'],
       volume: 0.7
     });
 
-    this.sounds['success'] = new Howl({
-      src: ['assets/audio/success.mp3'],
-      volume: 0.7
-    });
+    // // 🔊 effets
+    // this.sounds['click'] = new Howl({
+    //   src: ['assets/audio/click.mp3'],
+    //   volume: 0.7
+    // });
+
+    // this.sounds['success'] = new Howl({
+    //   src: ['assets/audio/success.mp3'],
+    //   volume: 0.7
+    // });
   }
 
   // 🎵 musique
@@ -42,7 +47,7 @@ export class AudioService {
   }
 
   // 🔊 effets
-  play(key: string) {
+  play(key: Sound) {
     this.sounds[key]?.play();
   }
 
@@ -55,4 +60,9 @@ export class AudioService {
   mute(muted: boolean) {
     Howler.mute(muted);
   }
+}
+
+export enum Sound {
+  BG = 'bg',
+  UNLOCK = 'unlock'
 }

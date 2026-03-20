@@ -13,8 +13,8 @@
     </div>
     <img src="assets/interface/LPG_Title.png" alt="LoL Pixel Guesser" class="game-logo">
     <div class="header-right">
-      <button class="header-icon" (click)="pwa.openChangelog()" title="Notes de version">📋</button>
       <button class="header-icon" (click)="this.router.navigate(['/about'])" title="À propos">❔</button>
+      <button class="header-icon" (click)="this.turnSound()">{{isBgSoundActive() ? '🔊' : '🔇'}} </button>
     </div>
   </header>
 
