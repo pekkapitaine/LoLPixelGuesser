@@ -6,6 +6,7 @@ import { ProfileService } from './core/services/profile.service';
 import { InstallModalComponent } from './shared/components/install-modal/install-modal.component';
 import { TrophyUnlockComponent } from './shared/components/trophy-unlock/trophy-unlock.component';
 import { ChangelogComponent } from './shared/components/changelog/changelog.component';
+import { AudioService } from './core/services/audio.service';
 
 @Component({
   selector: 'app-root',
@@ -18,6 +19,7 @@ export class AppComponent implements OnInit {
   private pwa = inject(PwaService);
   private profile = inject(ProfileService);
   private router = inject(Router);
+  private audio = inject(AudioService)
 
   ngOnInit(): void {
     this.pwa.init();

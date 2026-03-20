@@ -15,7 +15,7 @@ export class AudioService {
   private loadSounds() {
     // 🎵 musique de fond
     this.sounds['bg'] = new Howl({
-      src: ['assets/audio/music.mp3'],
+      src: ['assets/audio/piano_chill.mp3'],
       loop: true,
       volume: 0.3
     });
